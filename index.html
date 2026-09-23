@@ -1,0 +1,4356 @@
+<html lang="en" dir="ltr"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CACAO PLAYA DEL CARMEN</title>
+  <meta name="description" content="El arte del cacao">
+  <meta name="theme-color" content="#ff55cf">
+  
+  <!-- Open Graph / Facebook / Messengers -->
+  <meta property="og:type" content="website" data-id="th-modified">
+  <meta property="og:url" content="https://kakau.tiiny.site/" data-id="th-modified">
+  <meta property="og:title" content="Sr. Kakau ">
+  <meta property="og:description" content="El arte del cacao">
+  <meta property="og:image" content="https://tiiny.host/assets/logo-purple-bg.png" data-id="th-modified">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sr. kakau">
+  <meta name="twitter:description" content="El arte del cacao">
+  
+<style>
+    :root{
+      --bg1:#0e0805;
+      --bg2:#1a0f08;
+      --bg3:#120a05;
+      --card: rgba(18,14,10,.78);
+      --stroke: rgba(255,122,26,.28);
+      --text: #fbe9d8;
+      --muted: rgba(255,224,196,.68);
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --shadow2: 0 10px 24px rgba(0,0,0,.45);
+      --radius: 24px;
+      --radius2: 18px;
+      --max: 1020px;
+      --pink: #ff7a1a;
+      --purple: #ff9d2c;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;padding:0}
+    
+    /* Sparkle animation */
+    @keyframes sparkle {
+      0%, 100% { opacity: 0.18; transform: scale(0.65) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    @keyframes glow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    
+    @keyframes bubbleFloat {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+      50% { transform: translateY(-30px) scale(1.1); opacity: 0.9; }
+    }
+    
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background: linear-gradient(165deg, 
+        #050302 0%, 
+        #120904 15%, 
+        #1a0d05 30%,
+        #150a04 45%,
+        #0e0703 60%,
+        #1c0f06 75%,
+        #100904 90%,
+        #050301 100%
+      );
+      background-attachment: fixed;
+      overflow-x:hidden;
+      min-height:100vh;
+      position:relative;
+    }
+    
+    /* Soft light overlay for depth */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 80% 50% at 20% 20%, rgba(255,122,26,0.16) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 30%, rgba(255,122,26,0.12) 0%, transparent 45%),
+        radial-gradient(ellipse 70% 60% at 30% 80%, rgba(255,90,20,0.1) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 50% at 85% 85%, rgba(0,0,0,0.5) 0%, transparent 45%),
+        radial-gradient(ellipse 90% 40% at 50% 50%, rgba(255,140,50,0.06) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    /* Sparkles container */
+    .sparkles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      overflow: hidden;
+    }
+    .sparkle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      will-change: transform, opacity;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 6px 2px rgba(255,255,255,0.85), 0 0 14px 4px rgba(255,140,50,0.35);
+      animation: sparkle 3s ease-in-out infinite;
+    }
+    .sparkle:nth-child(1) { left: 10%; top: 15%; animation-delay: 0s; }
+    .sparkle:nth-child(2) { left: 25%; top: 35%; animation-delay: 0.5s; }
+    .sparkle:nth-child(3) { left: 75%; top: 20%; animation-delay: 1s; }
+    .sparkle:nth-child(4) { left: 85%; top: 60%; animation-delay: 1.5s; }
+    .sparkle:nth-child(5) { left: 15%; top: 70%; animation-delay: 2s; }
+    .sparkle:nth-child(6) { left: 60%; top: 80%; animation-delay: 2.5s; }
+    .sparkle:nth-child(7) { left: 40%; top: 10%; animation-delay: 0.8s; }
+    .sparkle:nth-child(8) { left: 90%; top: 40%; animation-delay: 1.8s; }
+    .sparkle:nth-child(9) { left: 5%; top: 50%; animation-delay: 2.2s; }
+    .sparkle:nth-child(10) { left: 50%; top: 55%; animation-delay: 0.3s; }
+    
+    /* Floating soft orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+      animation: float 8s ease-in-out infinite, glow 4s ease-in-out infinite;
+    }
+    .orb:nth-child(11) { width: 200px; height: 200px; left: 5%; top: 20%; background: rgba(255,150,70,0.3); animation-delay: 0s; }
+    .orb:nth-child(12) { width: 150px; height: 150px; right: 10%; top: 60%; background: rgba(35,35,35,0.25); animation-delay: 2s; }
+    .orb:nth-child(13) { width: 180px; height: 180px; left: 60%; top: 10%; background: rgba(24,16,10,0.2); animation-delay: 4s; }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:96px 18px 48px; position:relative; z-index:2;}
+    .card{
+      background: linear-gradient(135deg, 
+        rgba(14,10,8,0.85) 0%, 
+        rgba(16,11,7,0.8) 50%,
+        rgba(18,12,7,0.85) 100%
+      );
+      border: 1px solid rgba(255,122,26,0.7);
+      border-radius: var(--radius);
+      box-shadow: 
+        0 20px 60px rgba(255,122,26,0.12),
+        0 8px 24px rgba(43,15,29,0.08),
+        inset 0 1px 0 rgba(255,150,80,0.9),
+        inset 0 -1px 0 rgba(22,14,8,0.2);
+      backdrop-filter: blur(30px) saturate(150%);
+      -webkit-backdrop-filter: blur(30px) saturate(150%);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Liquid glass shine on cards */
+    .card::before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(180deg, 
+        rgba(14,10,8,0.4) 0%, 
+        rgba(14,10,8,0.1) 60%,
+        transparent 100%
+      );
+      pointer-events: none;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .card + .card{margin-top:24px}
+    /* Scroll offset for anchor links - prevents content hiding behind fixed header */
+    section[id]{scroll-margin-top:100px}
+    .topbar{
+      position:fixed; inset:14px 14px auto 14px;
+      z-index:100;
+      max-width:calc(var(--max) + 28px);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px 14px;
+      background: linear-gradient(135deg, 
+        rgba(14,10,8,0.8) 0%, 
+        rgba(192, 152, 114, 0.364) 50%,
+        rgba(19,13,7,0.8) 100%
+      );
+      border: 1px solid rgba(255,122,26,0.7);
+      border-radius: 20px;
+      box-shadow: 
+        0 15px 50px rgba(255, 174, 68, 0.15),
+        0 5px 20px rgba(43,15,29,0.08),
+        inset 0 1px 0 rgba(255,150,80,0.9);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+    }
+    .brand{display:flex; align-items:center; gap:10px; min-width:0; flex-shrink: 1}
+    .brand .name{font-weight:800; letter-spacing:.2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .brand .tag{font-size:12px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width: 120px}
+    .nav{display:flex; align-items:center; gap:10px}
+    .nav a{text-decoration:none; font-size:13px; color: rgba(255,224,196,.75); padding:8px 10px; border-radius:12px}
+    .nav a:hover{background: rgba(255,122,26,0.18)}
+    .nav .navCollab{
+      background: linear-gradient(135deg, #e3e635, #a38c0d);
+      color: #fff;
+      font-weight: 700;
+      border-radius: 10px;
+      padding: 8px 12px;
+      box-shadow: 0 4px 12px rgba(101,163,13,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav .navCollab:hover{
+      background: linear-gradient(135deg, #fecb31, #000000);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px #fecb31;
+    }
+    .nav .navVip{
+      background: linear-gradient(135deg, #ffbf6b, #ffa640);
+      color: #fff;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(255, 150, 64, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav .navVip:hover{
+      background: linear-gradient(135deg, #ffcc8a, #ff9d5c);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(246, 162, 66, 0.4);
+    }
+    .nav .ghostBtn{
+      border: 1px solid rgba(255,122,26,.7);
+      background: rgba(14,10,8,.45);
+      box-shadow: var(--shadow2);
+      border-radius: 14px;
+      padding:8px 10px;
+      font-size:13px;
+      cursor:pointer;
+      color: rgba(255,224,196,.8);
+    }
+    .Btn{
+      text-decoration:none;
+      display:flex; align-items:center; gap:8px;
+      padding:10px 14px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--pink) 0%, #ffa66b 50%, var(--purple) 100%);
+      background-size: 200% 200%;
+      color:#fff;
+      font-weight:800;
+      border: 1px solid rgba(255,122,26,.4);
+      box-shadow: 
+        0 15px 40px rgba(233, 173, 83, 0.3),
+        0 6px 16px rgba(25,25,25,.2),
+        inset 0 1px 0 rgba(255,150,80,0.3);
+      white-space:nowrap;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: gradientShift 3s ease infinite;
+    }
+    .Btn:hover{
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 
+        0 20px 50px rgba(255, 171, 68, 0.35),
+        0 8px 20px rgba(25,25,25,.25);
+    }
+
+    h1{font-size:44px; line-height:1.04; margin:0 0 10px}
+    h2{font-size:24px; margin:0 0 8px}
+    h3{font-size:16px; margin:0 0 8px}
+    p{margin:0}
+    .sub{color:var(--muted); font-size:15px; line-height:1.5}
+    .hero{padding:24px}
+    .hero::before{display:none}
+
+    /* Wide hero banner photo */
+    .banner{padding:12px; overflow:hidden}
+    .banner::before{display:none}
+    .banner img{
+      display:block;
+      width:100%;
+      border-radius: 20px;
+      aspect-ratio: 16 / 6;
+      object-fit: cover;
+      box-shadow: 
+        0 20px 50px rgba(255, 174, 68, 0.2),
+        0 8px 24px rgba(43, 29, 15, 0.1);
+      transition: transform 0.3s;
+    }
+    .banner:hover img{
+      transform: scale(1.01);
+    }
+
+
+    /* PROYECTO Section */
+    .aboutGrid{display:grid; grid-template-columns: 1fr ; gap:20px; align-items:stretch}
+    .aboutText h1{
+      font-size:38px; 
+      margin-bottom:8px;
+      background: linear-gradient(135deg, var(--text) 0%, var(--pink) 50%, var(--purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .aboutTagline{
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--pink);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .aboutText .bio{font-size:15px; line-height:1.6; color:var(--muted)}
+    .aboutText .bio b{color:var(--text)}
+    .aboutStats{
+      margin-top: 14px;
+      padding: 12px 16px;
+      background: linear-gradient(135deg, rgba(234, 144, 71, 0.1), rgba(226, 141, 43, 0.1));
+      border-radius: 12px;
+      font-size: 14px;
+      color: var(--text);
+      border: 1px solid rgba(255, 172, 64, 0.2);
+    }
+    .aboutStats b{
+      color: var(--pink);
+      font-size: 16px;
+    }
+    
+    /* About VIP Button */
+    .aboutVipBtn{
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 20px;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #ff8f44 0%, #ff9a6b 40%, #ff802c 100%);
+      background-size: 200% 200%;
+      border-radius: 18px;
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 
+        0 15px 45px rgba(255, 143, 68, 0.35),
+        0 8px 20px rgba(255, 167, 44, 0.2),
+        inset 0 1px 0 rgba(255,150,80,0.3);
+      animation: gradientShift 3s ease infinite;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .aboutVipBtn:hover{
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 
+        0 20px 55px rgba(255, 158, 68, 0.4),
+        0 12px 30px rgba(25,25,25,0.25),
+        inset 0 1px 0 rgba(255,150,80,0.4);
+    }
+    
+    .aboutVipGlow{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.35) 0%, transparent 50%);
+      animation: glowPulse 2.5s ease-in-out infinite;
+      pointer-events: none;
+    }
+    
+    .aboutVipIcon{
+      font-size: 28px;
+      position: relative;
+      z-index: 1;
+      animation: iconPulse 2s ease-in-out infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    
+    .aboutVipText{
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .aboutVipTitle{
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+    
+    .aboutVipSub{
+      font-size: 12px;
+      opacity: 0.85;
+      margin-top: 2px;
+    }
+    
+    .aboutVipArrow{
+      font-size: 22px;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.2s;
+    }
+    
+    .aboutVipBtn:hover .aboutVipArrow{
+      transform: translateX(5px);
+    }
+
+    /* Photo Gallery */
+    .galleryBox{
+      background: linear-gradient(145deg, 
+        rgba(14,10,8,0.75) 0%, 
+        rgba(17,12,8,0.65) 100%
+      );
+      border: 1px solid rgba(255,122,26,.7);
+      border-radius: var(--radius2);
+      padding:14px;
+      box-shadow: 
+        0 15px 45px rgba(255,122,26,0.12),
+        inset 0 1px 0 rgba(255,150,80,0.8);
+      position:relative;
+      backdrop-filter: blur(25px);
+      overflow: hidden;
+    }
+    .galleryBox::before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(180deg, rgba(255,140,60,0.35) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .gallerySlider{
+      position:relative;
+      overflow:hidden;
+      border-radius: 14px;
+      z-index:1;
+    }
+    .galleryTrack{
+      position:relative;
+      z-index:1;
+      display:flex;
+      transition: transform .6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .galleryTrack img{
+      width:100%;
+      max-width:100%;
+      flex: 0 0 100%;
+      height:320px;
+      object-fit:cover;
+      cursor:pointer;
+      border-radius: 12px;
+      -webkit-user-select:none;
+      user-select:none;
+      transition: opacity .6s ease, transform .6s ease, filter .6s ease;
+    }
+    .galleryTrack img.active{
+      opacity: 1;
+      transform: scale(1);
+    }
+    .galleryTrack img:not(.active){
+      opacity: 0.5;
+      transform: scale(0.96);
+      filter: brightness(0.9);
+    }
+    .galleryTrack img:hover{
+      cursor:zoom-in;
+    }
+    .galleryArrow{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:40px; height:40px;
+      background: rgba(14,10,8,.85);
+      border:1px solid rgba(255,122,26,.8);
+      border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:18px;
+      cursor:pointer;
+      box-shadow: var(--shadow2);
+      z-index:10;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+      opacity: 0.8;
+    }
+    .gallerySlider:hover .galleryArrow{opacity:1}
+    .galleryArrow:hover{
+      background:#ff7a1a; 
+      transform:translateY(-50%) scale(1.1);
+      box-shadow: 0 8px 24px rgba(255,122,26,.45);
+    }
+    .galleryArrow:active{transform:translateY(-50%) scale(0.95)}
+    .galleryArrow.prev{left:10px}
+    .galleryArrow.next{right:10px}
+    .galleryDots{
+      display:flex; justify-content:center; gap:10px; margin-top:16px;
+    }
+    .galleryCaption{
+      text-align: center;
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+      font-style: italic;
+    }
+    .galleryDot{
+      width:10px; height:10px;
+      border-radius:50%;
+      background: linear-gradient(135deg, rgba(255,170,110,0.5), rgba(235,140,60,0.35));
+      border: 1.5px solid rgba(235,140,60,0.4);
+      cursor:pointer;
+      transition: all .35s ease;
+      box-shadow: 0 2px 6px rgba(255,140,60,0.15);
+    }
+    .galleryDot:hover{
+      background: linear-gradient(135deg, rgba(255, 201, 150, 0.7), rgba(255, 181, 120, 0.5));
+      transform: scale(1.15);
+      box-shadow: 0 3px 10px rgba(230,110,30,0.25);
+    }
+    .galleryDot.active{
+      background: linear-gradient(135deg, #ffc188, #ffaa5a);
+      border-color: rgba(255,122,26,0.5);
+      transform: scale(1.2);
+      box-shadow: 0 0 14px rgba(255,120,30,0.45), 0 2px 8px rgba(230,110,30,0.25);
+    }
+
+    /* Section Titles */
+    .sectionTitle{
+      font-size: 28px;
+      font-weight: 900;
+      margin: 0 0 8px;
+      color: var(--pink);
+    }
+    .sectionSub{
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 20px;
+    }
+    
+    /* Social Icons */
+    .socialIcon{
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    /* Official Buttons */
+    .officialSection{margin-top:16px}
+    .officialSection h3{margin-bottom:12px; font-size:15px; color:var(--muted); font-weight:600}
+    .officialLinks{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .officialBtn{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      text-decoration:none;
+      color:var(--text);
+      background: linear-gradient(145deg, 
+        rgba(14,10,8,0.9) 0%, 
+        rgba(20,14,8,0.85) 100%
+      );
+      border:1px solid rgba(255,122,26,0.8);
+      border-radius: 16px;
+      padding:14px 16px;
+      box-shadow: 
+        0 10px 30px rgba(255,122,26,.1),
+        inset 0 1px 0 rgba(255,150,80,0.9);
+      transition: transform .2s ease, box-shadow .2s ease;
+      backdrop-filter: blur(15px);
+      position: relative;
+      overflow: hidden;
+    }
+    .officialBtn::before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255,140,60,0.4) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .officialBtn:hover{ 
+      transform: translateY(-2px) scale(1.01); 
+      box-shadow: 
+        0 15px 40px rgba(255,122,26,.15),
+        inset 0 1px 0 rgba(255,150,80,0.95);
+    }
+    .officialBtn .left{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:650;
+    }
+    .officialBtn .left svg{
+      color: var(--pink);
+    }
+    .officialBtn .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size:13px; opacity:.8}
+    .officialBtn .tag{
+      font-size:11px;
+      color:#5fe0a0;
+      background:rgba(47,122,75,0.18);
+      border:1px solid rgba(95,224,160,0.35);
+      padding:5px 10px;
+      border-radius:999px;
+      white-space:nowrap;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+    }
+    .officialBtn .tag.fake-warn{
+      color:#ffb347;
+      background:rgba(255,140,50,0.15);
+      border-color:rgba(255,179,71,0.35);
+    }
+    .fakeNotice{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius: 14px;
+      border-left: 4px solid #ffb347;
+      background: rgba(255,140,50,.12);
+      color: #ffcf9a;
+      font-size:13px;
+      line-height:1.45;
+    }
+
+    /* COLLABS SECTION */
+    .collabsCard{
+      background: linear-gradient(145deg, 
+        rgba(14,10,8,0.92) 0%, 
+        rgba(10,22,15,0.9) 50%,
+        rgba(8,20,13,0.94) 100%
+      );
+      border: 1px solid rgba(134,239,172,0.3);
+      box-shadow: 
+        0 20px 60px rgba(34,197,94,0.12),
+        0 8px 24px rgba(43,15,29,0.06),
+        inset 0 1px 0 rgba(255,150,80,0.9);
+    }
+    .collabsCard::before{display:none}
+    
+    .collabsHeader{
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .collabsHeader h2{
+      font-size: 32px;
+      font-weight: 900;
+      margin: 0 0 10px;
+      background: linear-gradient(135deg, #ffb347 0%, #ff7a1a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .collabsHeader p{
+      color: var(--muted);
+      font-size: 16px;
+      margin: 0;
+    }
+    .collabStatsLink{
+      color: #e6d94a;
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+    }
+    .collabStatsLink:hover{
+      color: #fff17a;
+    }
+    
+    .collabsGrid{
+      display: inline-flexbox;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: start;
+    }
+    
+    .collabsContent h3{
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 16px;
+      color: var(--text);
+    }
+    
+    .collabsList{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .collabItem{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      background: rgba(14,10,8,0.7);
+      border: 1px solid rgba(134,239,172,0.3);
+      border-radius: 12px;
+      font-size: 14px;
+      color: var(--text);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .collabItem:hover{
+      transform: translateX(4px);
+      box-shadow: 0 4px 12px rgba(34,197,94,0.1);
+    }
+    .collabIcon{
+      font-size: 20px;
+    }
+    
+    .collabTags{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .collabTag{
+      padding: 6px 12px;
+      background: linear-gradient(135deg, rgba(34,197,94,0.15), rgba(101,163,13,0.1));
+      border: 1px solid rgba(197, 126, 34, 0.3);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #ffb347;
+    }
+    
+    .collabsCta{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .collabBox{
+      background: linear-gradient(145deg, 
+        rgba(14,10,8,0.9) 0%, 
+        rgba(9,20,14,0.88) 100%
+      );
+      border: 2px solid rgba(197, 126, 34, 0.3);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 12px 35px rgba(34,197,94,0.1);
+    }
+    .collabBoxIcon{
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+    .collabBox h3{
+      font-size: 18px;
+      font-weight: 800;
+      margin: 0 0 8px;
+      color: #ffb347;
+    }
+    .collabBox p{
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0 0 16px;
+      line-height: 1.5;
+    }
+    
+    .collabEmailBtn{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, #ba5421 0%, #a36616 50%, #a35816 100%);
+      background-size: 200% 200%;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 14px;
+      box-shadow: 
+        0 12px 30px rgba(197, 126, 34, 0.3),
+        inset 0 1px 0 rgba(255,150,80,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: gradientShift 4s ease infinite;
+    }
+    .collabEmailBtn:hover{
+      transform: translateY(-2px);
+      box-shadow: 
+        0 16px 40px rgba(197, 151, 34, 0.4),
+        inset 0 1px 0 rgba(255,150,80,0.3);
+    }
+    .collabEmailBtn svg{
+      flex-shrink: 0;
+    }
+    
+    @media (max-width: 900px){
+      .collabsGrid{grid-template-columns: 1fr}
+    }
+    @media (max-width: 520px){
+      .collabsHeader h2{font-size: 26px}
+      .collabItem{padding: 10px 12px; font-size: 13px}
+      .collabBox{padding: 18px}
+    }
+    
+    /* VIP Hero Section - Liquid Glass Style */
+    .vipHero{
+      padding:0;
+      overflow:hidden;
+      position:relative;
+      background: linear-gradient(145deg, 
+        rgba(14,10,8,0.95) 0%,
+        rgba(19,13,7,0.9) 30%,
+        rgba(26,16,9,0.85) 60%,
+        rgba(22,14,8,0.9) 100%
+      );
+      border: 1px solid rgba(255,122,26,0.8);
+      box-shadow: 
+        0 25px 80px rgba(255,122,26,0.2),
+        0 10px 40px rgba(25,25,25,0.1),
+        inset 0 1px 0 rgba(255,150,80,0.9),
+        inset 0 -1px 0 rgba(22,14,8,0.3);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+    }
+    
+    /* Liquid Glass Shine Effect */
+    .vipHero::before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, 
+        rgba(14,10,8,0.6) 0%, 
+        rgba(14,10,8,0.1) 50%,
+        transparent 100%
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    /* Decorations Container */
+    .vipDecorations{
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      overflow: hidden;
+    }
+    
+    /* Floating Butterflies */
+    @keyframes butterflyFloat {
+      0%, 100% { transform: translate(-50%,-50%) translateY(0) rotate(-5deg); }
+      25% { transform: translate(-50%,-50%) translateY(-15px) rotate(5deg); }
+      50% { transform: translate(-50%,-50%) translateY(-8px) rotate(-3deg); }
+      75% { transform: translate(-50%,-50%) translateY(-20px) rotate(8deg); }
+    }
+    
+    .vipButterfly{
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      font-size: 28px;
+      opacity: 0.7;
+      animation: butterflyFloat var(--dur, 4s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+      filter: drop-shadow(0 4px 8px rgba(255,140,50,0.3));
+    }
+    
+    /* Pulsing Hearts */
+    @keyframes heartPulse {
+      0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.5; }
+      50% { transform: translate(-50%,-50%) scale(1.2); opacity: 0.8; }
+    }
+    
+    .vipHeart{
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      font-size: 20px;
+      animation: heartPulse 2s ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+      filter: drop-shadow(0 2px 6px rgba(255,140,50,0.4));
+    }
+    
+    /* Twinkling Sparkles */
+    @keyframes sparkleTwinkle {
+      0%, 100% { transform: translate(-50%,-50%) scale(0.8) rotate(0deg); opacity: 0.3; }
+      50% { transform: translate(-50%,-50%) scale(1.3) rotate(180deg); opacity: 1; }
+    }
+    
+    .vipSparkle{
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      font-size: 16px;
+      animation: sparkleTwinkle 2.5s ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+    }
+    
+    .vipHeroGrid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+      padding: 40px 30px;
+      position: relative;
+      z-index: 3;
+    }
+    
+    .vipHeroContent{
+      padding: 20px;
+    }
+    
+    .vipBadge{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: linear-gradient(135deg, rgba(255,122,26,0.15), rgba(25,25,25,0.1));
+      border: 1px solid rgba(255,122,26,0.3);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: var(--pink);
+      margin-bottom: 16px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .vipTitle{
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1.1;
+      margin: 0 0 16px;
+      background: linear-gradient(135deg, #ffb444 0%, #ff9a6b 30%, #ff8b2c 70%, #ff7a1a 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 4s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    .vipSubtitle{
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0 0 24px;
+    }
+    
+    .vipCta{
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    
+    .vipBtnPrimary{
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 28px;
+      background: linear-gradient(135deg, #ff6944 0%, #ffae6b 50%, #ff9d2c 100%);
+      background-size: 200% 200%;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      text-decoration: none;
+      border-radius: 16px;
+      border: 1px solid rgba(255,122,26,0.4);
+      box-shadow: 
+        0 20px 50px rgba(255,122,26,0.35),
+        0 8px 20px rgba(25,25,25,0.2),
+        inset 0 1px 0 rgba(255,150,80,0.3);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: gradientShift 3s ease infinite;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+    }
+    
+    .vipBtnPrimary:hover{
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 
+        0 25px 60px rgba(255,122,26,0.4),
+        0 12px 30px rgba(25,25,25,0.25),
+        inset 0 1px 0 rgba(255,150,80,0.4);
+    }
+    
+    .vipBtnGlow{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.4) 0%, transparent 50%);
+      animation: glowPulse 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+    
+    
+    .vipBtnContent{
+      position: relative;
+      z-index: 1;
+    }
+    
+    .vipBtnArrow{
+      position: relative;
+      z-index: 1;
+      font-size: 18px;
+      transition: transform 0.2s;
+    }
+    
+    .vipBtnPrimary:hover .vipBtnArrow{
+      transform: translateX(4px);
+    }
+    
+    .vipCopyLink{
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      background: transparent;
+      border: none;
+      font-size: 12px;
+      color: rgba(255,224,196,0.5);
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 8px;
+    }
+    .vipCopyLink:hover{
+      color: var(--pink);
+    }
+    
+    .vipNote{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      background: rgba(14,10,8,0.6);
+      border: 1px solid rgba(255,150,70,0.5);
+      border-radius: 14px;
+      font-size: 13px;
+      color: var(--muted);
+      backdrop-filter: blur(15px);
+    }
+    
+    .vipNoteIcon{
+      font-size: 18px;
+    }
+    
+    .vipHeroImage{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .vipImageFrame{
+      display: block;
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 
+        0 30px 80px rgba(255,122,26,0.3),
+        0 15px 40px rgba(25,25,25,0.15),
+        inset 0 0 0 1px rgba(255,122,26,0.35);
+      transform: rotate(2deg);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    
+    .vipImageFrame:hover{
+      transform: rotate(0deg) scale(1.03);
+      box-shadow: 
+        0 40px 100px rgba(255,122,26,0.4),
+        0 20px 50px rgba(25,25,25,0.2),
+        inset 0 0 0 2px rgba(255,122,26,0.6);
+    }
+    
+    .vipImageFrame img{
+      display: block;
+      width: 100%;
+      max-width: 380px;
+      height: auto;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    
+    .vipImageFrame:hover img{
+      transform: scale(1.05);
+    }
+    
+    .vipImageOverlay{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px 20px;
+      background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: padding 0.3s;
+    }
+    
+    .vipImageFrame:hover .vipImageOverlay{
+      padding-bottom: 28px;
+    }
+    
+    .vipImageCta{
+      font-size: 16px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    
+    .vipImageFrame:hover .vipImageCta{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Mobile: show "Tap to " when VIP section is in view */
+    @media (max-width: 900px) {
+      .vipImageCta.mobileVisible{
+        opacity: 1;
+        transform: translateY(0);
+        animation: tapPulse 2s ease-in-out infinite;
+      }
+    }
+    
+    @keyframes tapPulse {
+      0%, 100% { 
+        transform: scale(1); 
+        text-shadow: 0 2px 10px rgba(255, 172, 64, 0.6); 
+      }
+      50% { 
+        transform: scale(1.08); 
+        text-shadow: 0 2px 20px rgba(255,110,20,1), 0 0 30px rgba(255, 193, 100, 0.6); 
+      }
+    }
+    
+    .vipFeatures{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding: 24px 30px 30px;
+      background: rgba(14,10,8,0.5);
+      border-top: 1px solid rgba(255,122,26,0.6);
+      border-radius: 0 0 var(--radius) var(--radius);
+      position: relative;
+      z-index: 3;
+    }
+    
+    .vipFeature{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px 16px;
+      background: rgba(14,10,8,0.85);
+      border: 1px solid rgba(255,122,26,0.9);
+      border-radius: 24px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 8px 24px rgba(255,122,26,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .vipFeature:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(255,122,26,0.15);
+    }
+    
+    .vipFeatureIcon{
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    
+    .vipFeature h3{
+      margin: 0;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    /* VIP Section */
+    .vipSection{padding:24px}
+    .vipGrid{display:grid; grid-template-columns: 1.2fr .8fr; gap:16px; align-items:stretch}
+    .ctaRow{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
+    .btn{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+      text-decoration:none;
+      color:var(--text);
+      background:rgba(18,14,10,0.85);
+      border:1px solid rgba(255,122,26,.3);
+      border-radius: 16px;
+      padding:14px 14px;
+      box-shadow: var(--shadow2);
+      transition: transform .12s ease, box-shadow .12s ease;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); box-shadow: 0 18px 40px rgba(0,0,0,.5)}
+    .btn.primary{
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color:#fff;
+      border-color: rgba(255,122,26,.35);
+    }
+    .btn.primary span:last-child{opacity:.9}
+    .btn.ghost{background: rgba(14,10,8,.72)}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,122,26,.65);
+      background: rgba(14,10,8,.5);
+      color: rgba(255,224,196,.75);
+      font-size: 12px;
+      margin-top:14px;
+    }
+    .mini{
+      background: linear-gradient(145deg, 
+        rgba(14,10,8,0.75) 0%, 
+        rgba(17,12,8,0.65) 100%
+      );
+      border: 1px solid rgba(255,122,26,.7);
+      border-radius: var(--radius2);
+      padding:16px;
+      box-shadow: 
+        0 12px 35px rgba(255,122,26,0.1),
+        inset 0 1px 0 rgba(255,150,80,0.8);
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+    }
+    .mini::before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(180deg, rgba(255,140,60,0.35) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .mini ul{margin:10px 0 0; padding-left:18px; color: rgba(255,224,196,.78); position:relative}
+    .mini li{margin:6px 0; font-size:13px; line-height:1.35}
+    .mini h3{position:relative}
+    .kv{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .chip{
+      font-size:12px;
+      padding:8px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,122,26,.7);
+      background: linear-gradient(135deg, 
+        rgba(14,10,8,.7) 0%, 
+        rgba(19,13,7,.6) 100%
+      );
+      color: rgba(255,224,196,.76);
+      cursor:pointer;
+      backdrop-filter: blur(10px);
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(255,122,26,.08);
+    }
+    .chip:hover{
+      background: linear-gradient(135deg, 
+        rgba(14,10,8,.85) 0%, 
+        rgba(26,16,9,.8) 100%
+      );
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(255,122,26,.12);
+    }
+
+    .sectionHead{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin-bottom:10px}
+    .sectionHead p{color:var(--muted); font-size:13px}
+
+    .statsGrid{display:grid; grid-template-columns: repeat(4,1fr); gap:12px; margin-top:12px}
+    .stat{
+      background: linear-gradient(145deg, 
+        rgba(14,10,8,0.8) 0%, 
+        rgba(17,12,8,0.7) 100%
+      );
+      border: 1px solid rgba(255,122,26,0.7);
+      border-radius: 18px;
+      padding:16px;
+      box-shadow: 
+        0 12px 35px rgba(255,122,26,0.1),
+        inset 0 1px 0 rgba(255,150,80,0.8);
+      min-height:82px;
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .stat:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 18px 45px rgba(255,122,26,0.15);
+    }
+    .stat::before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255,140,60,0.4) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .stat .num{
+      font-size:28px; 
+      font-weight:900; 
+      letter-spacing:.2px;
+      color: var(--pink);
+      position: relative;
+    }
+    .stat .lbl{font-size:12px; color: rgba(255,224,196,.72); margin-top:4px; position: relative;}
+    
+    /* Growing stats animation */
+    @keyframes statPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+    
+    @keyframes arrowBounce {
+      0%, 100% { transform: translateY(0); opacity: 0.8; }
+      50% { transform: translateY(-3px); opacity: 1; }
+    }
+    
+    .statGrow .num{
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .statPulse{
+      display: inline-block;
+      animation: statPulse 2.5s ease-in-out infinite;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .statArrow{
+      font-size: 18px;
+      color: #c5a722;
+      animation: arrowBounce 1.5s ease-in-out infinite;
+      text-shadow: 0 2px 8px rgba(197, 151, 34, 0.4);
+    }
+    .metaStrip{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius: 18px;
+      border: 1px dashed rgba(255,122,26,.7);
+      background: rgba(14,10,8,.45);
+      color: rgba(255,224,196,.75);
+      font-size:13px;
+      line-height:1.45;
+    }
+
+    /* Proof Gallery */
+    .gallery{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-top:12px}
+    figure.shot{
+      margin:0;
+      background: linear-gradient(145deg, 
+        rgba(14,10,8,0.8) 0%, 
+        rgba(17,12,8,0.7) 100%
+      );
+      border: 1px solid rgba(255,122,26,.7);
+      border-radius: 20px;
+      box-shadow: 
+        0 12px 35px rgba(255,122,26,0.1),
+        inset 0 1px 0 rgba(255,150,80,0.8);
+      overflow:hidden;
+      cursor:pointer;
+      position:relative;
+      transition: transform .2s, box-shadow .2s;
+      -webkit-user-select:none;
+      user-select:none;
+      backdrop-filter: blur(20px);
+    }
+    figure.shot::before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 40%;
+      background: linear-gradient(180deg, rgba(255,140,60,0.3) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    figure.shot:hover{
+      transform: translateY(-4px) scale(1.01); 
+      box-shadow: 
+        0 20px 50px rgba(255,122,26,0.2),
+        0 10px 25px rgba(43,15,29,.1);
+      cursor:zoom-in;
+    }
+    figure.shot img{
+      display:block; 
+      width:100%; 
+      height:260px; 
+      object-fit:cover;
+    }
+    figure.shot figcaption{
+      padding:10px 12px;
+      font-size:12px;
+      color: rgba(255,224,196,.72);
+      background: rgba(14,10,8,.55);
+      border-top:1px solid rgba(255,122,26,.55);
+    }
+    .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+    .foot{margin-top:30px; color: rgba(255,224,196,.62); font-size:12px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:16px}
+    .footText{color: rgba(255,224,196,.62)}
+    
+    /* Back to Top Button */
+    .backToTop{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #f85e38 0%, #e95e0e 30%, #c76102 60%, #f8bb38 100%);
+      background-size: 300% 300%;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 999px;
+      border: 1px solid rgba(255,122,26,0.4);
+      box-shadow: 
+        0 12px 35px rgba(14,165,233,0.35),
+        0 6px 16px rgba(2,132,199,0.2),
+        inset 0 1px 0 rgba(255,150,80,0.3);
+      position: relative;
+      overflow: hidden;
+      animation: shimmerBlue 3s ease infinite;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    @keyframes shimmerBlue {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .backToTop:hover{
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 
+        0 18px 45px rgba(14,165,233,0.4),
+        0 10px 25px rgba(2,132,199,0.25),
+        inset 0 1px 0 rgba(255,150,80,0.4);
+    }
+    
+    .backToTopGlow{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.35) 0%, transparent 50%);
+      animation: glowPulse 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+    
+    .backToTopContent{
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    /* Music Button in Header */
+    .musicBtn {
+      background: rgba(24,16,10,0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 2px solid rgba(255,122,26,0.35);
+      border-radius: 12px;
+      padding: 8px 12px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      color: rgba(255,224,196,0.85);
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      font-weight: bold;
+    }
+    .musicBtn:hover {
+      background: rgba(255,150,70,0.7);
+      transform: scale(1.05);
+      color: #140a05;
+    }
+    .musicBtn.playing {
+      background: linear-gradient(135deg, rgba(255, 157, 100, 0.8), rgba(200, 92, 50, 0.7));
+      color: #fff;
+      border-color: rgba(255, 170, 100, 0.6);
+      box-shadow: 0 0 12px rgba(255, 162, 100, 0.5);
+      text-shadow: 0 0 10px rgba(255,220,180,0.8);
+    }
+    .musicBtn.playing:hover {
+      color: #fff;
+      background: linear-gradient(135deg, rgba(255, 185, 120, 0.9), rgba(30,30,30,0.8));
+    }
+    
+    /* Mobile Controls */
+    .mobileControls {
+      display: none;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    /* Mobile Quick Buttons */
+    .mobileQuickBtn {
+      padding: 6px 10px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .collabQuick {
+      background: linear-gradient(135deg, #a3e635, #a35816);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(101,163,13,0.3);
+    }
+    .vipQuick {
+      background: linear-gradient(135deg, #ffae6b, #ff7a1a);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(255,110,20,0.3);
+    }
+    .langQuick {
+      background: rgba(255,122,26,0.15);
+      color: #fbe9d8;
+      font-size: 14px;
+      padding: 6px 8px;
+    }
+    
+    /* Mobile Music Button - More visible */
+    .musicBtnMobile {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      border: 2px solid rgba(255,122,26,0.35);
+      background: rgba(24,16,10,0.7);
+      color: rgba(255,180,120,0.95);
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .musicBtnMobile.playing {
+      background: linear-gradient(135deg, rgba(255,140,50,0.8), rgba(30,30,30,0.7));
+      color: #fff;
+      border-color: rgba(255, 219, 100, 0.6);
+      box-shadow: 0 0 12px rgba(255,140,50,0.5);
+    }
+    
+    /* Burger Menu Button */
+    .burgerBtn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      width: 36px;
+      height: 36px;
+      background: rgba(24,16,10,0.6);
+      border: 2px solid rgba(255,122,26,0.35);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+    }
+    .burgerBtn:hover, .burgerBtn:active {
+      background: rgba(255,140,50,0.3);
+    }
+    .burgerLine {
+      width: 16px;
+      height: 2px;
+      background: rgba(255,224,196,0.85);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .burgerBtn.active .burgerLine:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .burgerBtn.active .burgerLine:nth-child(2) {
+      opacity: 0;
+    }
+    .burgerBtn.active .burgerLine:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+    
+    /* Mobile Menu Overlay */
+    .mobileMenu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(20,0,30,0.98), rgba(40,10,60,0.98));
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease;
+    }
+    .mobileMenu.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .mobileMenuContent {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 24px;
+      text-align: center;
+      width: 90%;
+      max-width: 320px;
+    }
+    .mobileMenuItem {
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, rgba(14,10,8,0.1), rgba(14,10,8,0.05));
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,122,26,0.15);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .mobileMenuItem:hover, .mobileMenuItem:active {
+      background: rgba(255,110,20,0.3);
+      transform: scale(1.02);
+    }
+    .mobileMenuItem.navCollab {
+      background: linear-gradient(135deg, rgba(0,255,136,0.3), rgba(0,200,100,0.2));
+      color: #00ff88;
+      border-color: rgba(0,255,136,0.3);
+    }
+    .mobileMenuItem.navVip {
+      background: linear-gradient(135deg, rgba(255,110,20,0.4), rgba(255,150,80,0.3));
+      color: #ff9040;
+      border-color: rgba(255,110,20,0.3);
+    }
+    .mobileMenuClose {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      background: rgba(14,10,8,0.1);
+      border: 1px solid rgba(255,122,26,0.2);
+      border-radius: 50%;
+      font-size: 24px;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Modal */
+    .modalOverlay{
+      position:fixed; inset:0;
+      background: rgba(12,6,12,.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:200;
+    }
+    .modalOverlay.open{display:flex}
+    .modal{
+      width:min(760px, 100%);
+      background: linear-gradient(145deg, 
+        rgba(14,10,8,0.92) 0%, 
+        rgba(17,12,8,0.88) 50%,
+        rgba(19,13,7,0.92) 100%
+      );
+      border:1px solid rgba(255,122,26,.75);
+      border-radius: 28px;
+      box-shadow: 
+        0 30px 80px rgba(255,122,26,0.25),
+        0 15px 40px rgba(43,15,29,0.15),
+        inset 0 1px 0 rgba(255,150,80,0.9);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+      padding:22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .modal::before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 35%;
+      background: linear-gradient(180deg, rgba(255,140,60,0.5) 0%, transparent 100%);
+      pointer-events: none;
+      border-radius: 28px 28px 0 0;
+    }
+    .modalTop{display:flex; align-items:center; justify-content:space-between; gap:12px}
+    .modalTop .title{font-weight:900}
+    .closeBtn{
+      border:1px solid rgba(255,122,26,.65);
+      background: rgba(14,10,8,.55);
+      border-radius: 14px;
+      padding:8px 10px;
+      cursor:pointer;
+    }
+    .langGrid{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .langBtn{
+      border: 1px solid rgba(255,122,26,.65);
+      background: rgba(14,10,8,.55);
+      border-radius: 999px;
+      padding:10px 12px;
+      cursor:pointer;
+      font-size:13px;
+      color: rgba(255,224,196,.78);
+    }
+    .langBtn.active{
+      background: linear-gradient(135deg, rgba(255,122,26,.22), rgba(25,25,25,.16));
+      border-color: rgba(255,122,26,.85);
+      font-weight:800;
+    }
+
+    /* Image Modal with Navigation */
+    .imgModal{position:relative}
+    .imgModal img{width:100%; height:auto; border-radius: 18px; max-height:70vh; object-fit:contain}
+    .imgModal .hint{margin-top:10px; color: rgba(255,224,196,.62); font-size:12px}
+    .imgModalNav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:12px;
+    }
+    .imgNavBtn{
+      background: rgba(14,10,8,.75);
+      border: 1px solid rgba(255,122,26,.65);
+      border-radius: 14px;
+      padding:10px 16px;
+      cursor:pointer;
+      font-size:14px;
+      font-weight:600;
+      transition: background .12s;
+    }
+    .imgNavBtn:hover{background:#ff7a1a; color:#140a05}
+    .imgNavBtn:disabled{opacity:.4; cursor:not-allowed}
+    .imgCounter{font-size:13px; color:var(--muted)}
+
+    /* Hearts background */
+.hearts{position:fixed; inset:0; z-index:1; pointer-events:none; overflow:hidden;}
+.heart{
+  position:absolute;
+  left:var(--x);
+  top:var(--y);
+  font-size:var(--s);
+  line-height:1;
+  opacity:0;
+  transform:translate(-50%,-50%) translate(var(--sx), 0px) scale(.65) rotate(var(--r));
+  filter: blur(.15px);
+  will-change: transform, opacity;
+  animation: heartPop var(--d) ease-in-out forwards;
+}
+@keyframes heartPop{
+  0%{opacity:0; transform:translate(-50%,-50%) translate(var(--sx), 0px) scale(.65) rotate(var(--r));}
+  12%{opacity:var(--o); transform:translate(-50%,-50%) translate(var(--sx), -6px) scale(.95) rotate(var(--r));}
+  80%{opacity:var(--o); transform:translate(-50%,-50%) translate(var(--sx), var(--ty)) scale(1.05) rotate(var(--r));}
+  100%{opacity:0; transform:translate(-50%,-50%) translate(var(--sx), calc(var(--ty) - 12px)) scale(1.18) rotate(var(--r));}
+}
+@media (prefers-reduced-motion: reduce){
+  .heart{animation:none; opacity:0;}
+}
+
+/* Responsive */
+    @media (max-width: 900px){
+      .aboutGrid{grid-template-columns:1fr;}
+      .vipGrid{grid-template-columns:1fr;}
+      .vipHeroGrid{grid-template-columns:1fr; gap:20px}
+      .vipHeroImage{order:-1}
+      .vipImageFrame{transform:none}
+      .vipImageFrame img{max-width:320px}
+      .vipFeatures{grid-template-columns: repeat(1, 1fr)}
+      .vipTitle{font-size:36px}
+      h1{font-size:36px}
+      .statsGrid{grid-template-columns: repeat(1,1fr)}
+      .gallery{grid-template-columns: repeat(2, 1fr)}
+      figure.shot img{height:240px}
+      .grid3{grid-template-columns:1fr}
+      /* Hide desktop nav, show mobile controls */
+      .navDesktop{display:none}
+      .mobileControls{display:flex}
+      .Btn{display:none}
+      .brand .tag{max-width: 80px; font-size: 10px}
+      .brand .name{font-size: 14px}
+    }
+    @media (max-width: 520px){
+      .wrap{padding-top:92px}
+      h1{font-size:32px}
+      .vipTitle{font-size:28px}
+      /* Smaller mobile buttons */
+      .mobileQuickBtn{padding:5px 7px; font-size:10px; border-radius:8px}
+      .langQuick{padding:5px 6px; font-size:12px}
+      .musicBtnMobile, .burgerBtn{width:32px; height:32px; border-radius:8px}
+      .burgerLine{width:14px}
+      .mobileControls{gap:4px}
+      .vipHeroGrid{padding:24px 18px}
+      .vipHeroContent{padding:10px}
+      .vipFeatures{padding:18px; gap:10px}
+      .vipFeature{padding:12px 8px}
+      .vipFeatureIcon{font-size:22px}
+      .vipFeature h3{font-size:11px}
+      .vipBtnPrimary{padding:14px 20px; font-size:15px}
+      .vipCta{flex-direction:column}
+      .vipButterfly{font-size:20px}
+      .vipHeart{font-size:16px}
+      .aboutText h1{font-size:28px}
+      .aboutVipBtn{padding:14px 16px; gap:12px}
+      .aboutVipIcon{font-size:24px}
+      .aboutVipTitle{font-size:15px}
+      .aboutVipSub{font-size:11px}
+      .gallery{grid-template-columns:1fr}
+      figure.shot img{height:280px}
+      .galleryTrack img{height:260px}
+      .card{padding:18px}
+      .hero{padding:18px}
+      .banner{padding:10px}
+      .banner img{border-radius:18px; aspect-ratio: 16 / 9}
+      .sectionHead{flex-direction:column; align-items:flex-start}
+      .sectionHead .pill{margin-top:6px}
+      .officialBtn{flex-wrap:wrap; align-items:flex-start}
+      .officialBtn .left{flex-direction:column; align-items:flex-start; gap:4px; min-width:0; flex:1}
+      .officialBtn .mono{font-size:12px; word-break:break-word}
+      .stat .num{font-size:24px}
+      .ctaRow{flex-direction:column; align-items:stretch}
+      .ctaRow .btn{width:100%}
+      .ctaRow .btn span:last-child{margin-left:auto}
+      .sub, .pill, .metaStrip, .fakeNotice{overflow-wrap:anywhere}
+      .vipGrid .mini{padding:18px}
+
+    }
+    /* Language button always visible */
+
+    /* RTL support */
+    html[dir="rtl"] .wrap{direction:rtl}
+    html[dir="rtl"] ul{padding-left:0; padding-right:18px}
+
+    /* ===================== */
+    /* kakau ON TOP RELEASE */
+    /* ===================== */
+    .releaseCard {
+      background: linear-gradient(135deg, 
+        rgba(14,10,8,0.88) 0%, 
+        rgba(17,12,8,0.82) 50%,
+        rgba(19,13,7,0.88) 100%
+      );
+      border: 2px solid rgba(255,122,26,0.35);
+      border-radius: var(--radius);
+      box-shadow: 
+        0 0 40px rgba(255,122,26,0.25),
+        0 25px 70px rgba(255,122,26,0.18),
+        0 10px 30px rgba(43,15,29,0.1),
+        inset 0 1px 0 rgba(255,150,80,0.95),
+        inset 0 -1px 0 rgba(22,14,8,0.25);
+      backdrop-filter: blur(35px) saturate(160%);
+      -webkit-backdrop-filter: blur(35px) saturate(160%);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .releaseCard::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, 
+        rgba(14,10,8,0.5) 0%, 
+        rgba(14,10,8,0.15) 50%,
+        transparent 100%
+      );
+      pointer-events: none;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    
+    /* Neon glow border animation */
+    .releaseCard::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: calc(var(--radius) + 2px);
+      background: linear-gradient(45deg, 
+        rgba(255,122,26,0.6), 
+        rgba(255,200,120,0.35), 
+        rgba(255,122,26,0.6),
+        rgba(255,200,120,0.35)
+      );
+      background-size: 300% 300%;
+      animation: neonBorder 4s ease infinite;
+      z-index: -1;
+      filter: blur(8px);
+      opacity: 0.6;
+    }
+    
+    @keyframes neonBorder {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    .releaseGrid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Album cover with premium effect */
+    .releaseCoverWrap {
+      position: relative;
+      perspective: 1000px;
+    }
+    
+    .releaseCoverLink {
+      display: block;
+      position: relative;
+      border-radius: 16px;
+      overflow: visible;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .releaseCoverLink:hover {
+      transform: translateY(-8px) rotateX(5deg) rotateY(-3deg);
+    }
+    
+    .releaseCover {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 
+        0 20px 50px rgba(43,15,29,0.25),
+        0 10px 25px rgba(255,122,26,0.2),
+        0 0 0 1px rgba(255,122,26,0.4);
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Glossy shine overlay */
+    .releaseCoverShine {
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.35) 0%,
+        rgba(255,255,255,0.12) 25%,
+        transparent 50%,
+        transparent 100%
+      );
+      pointer-events: none;
+      z-index: 2;
+      transition: opacity 0.3s;
+    }
+    
+    .releaseCoverLink:hover .releaseCoverShine {
+      opacity: 0.8;
+    }
+    
+    /* Soft shadow beneath */
+    .releaseCoverShadow {
+      position: absolute;
+      bottom: -15px;
+      left: 10%;
+      right: 10%;
+      height: 30px;
+      background: radial-gradient(ellipse at center, rgba(255,122,26,0.35) 0%, transparent 70%);
+      filter: blur(12px);
+      z-index: 0;
+      transition: transform 0.4s, opacity 0.4s;
+    }
+    
+    .releaseCoverLink:hover .releaseCoverShadow {
+      transform: translateY(5px) scale(1.1);
+      opacity: 0.8;
+    }
+    
+    /* Content area */
+    .releaseContent {
+      position: relative;
+    }
+    
+    .releaseLabel {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--pink);
+      background: linear-gradient(135deg, rgba(255,122,26,0.15), rgba(255,122,26,0.08));
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,122,26,0.25);
+      margin-bottom: 14px;
+    }
+    
+    .releaseLabel::before {
+      content: '🍫';
+      font-size: 12px;
+    }
+    
+    .releaseTitle {
+      font-size: 32px;
+      font-weight: 800;
+      margin: 0 0 12px;
+      background: linear-gradient(135deg, var(--text) 0%, var(--pink) 60%, var(--purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.15;
+    }
+    
+    .releaseSubtitle {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-bottom: 24px;
+      max-width: 380px;
+    }
+    
+    /* Buttons */
+    .releaseBtns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    
+    .releaseBtn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .releaseBtn.primary {
+      background: linear-gradient(135deg, var(--pink) 0%, #ff8c3d 50%, var(--purple) 100%);
+      background-size: 200% 200%;
+      color: #fff;
+      box-shadow: 
+        0 12px 35px rgba(255,122,26,0.35),
+        0 5px 15px rgba(25,25,25,0.2),
+        inset 0 1px 0 rgba(255,150,80,0.3);
+      animation: gradientShift 3s ease infinite;
+    }
+    
+    .releaseBtn.primary:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 
+        0 18px 45px rgba(255,122,26,0.4),
+        0 8px 20px rgba(25,25,25,0.25);
+    }
+    
+    .releaseBtn.secondary {
+      background: rgba(14,10,8,0.75);
+      color: var(--text);
+      border: 1px solid rgba(255,122,26,0.3);
+      box-shadow: 
+        0 8px 25px rgba(255,122,26,0.12),
+        inset 0 1px 0 rgba(255,150,80,0.8);
+    }
+    
+    .releaseBtn.secondary:hover {
+      background: rgba(14,10,8,0.9);
+      border-color: rgba(255,122,26,0.5);
+      transform: translateY(-2px);
+      box-shadow: 
+        0 12px 30px rgba(255,122,26,0.18),
+        inset 0 1px 0 rgba(255,150,80,0.9);
+    }
+    
+    /* Subtle music notes decoration */
+    .releaseNotes {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-size: 48px;
+      opacity: 0.08;
+      pointer-events: none;
+      transform: rotate(15deg);
+    }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+      .releaseGrid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        text-align: center;
+      }
+      .releaseCoverWrap {
+        max-width: 260px;
+        margin: 0 auto;
+      }
+      .releaseSubtitle {
+        max-width: 100%;
+      }
+      .releaseBtns {
+        justify-content: center;
+      }
+      .releaseNotes {
+        display: none;
+      }
+    }
+    
+    @media (max-width: 520px) {
+      .releaseCard {
+        padding: 20px;
+      }
+      .releaseTitle {
+        font-size: 26px;
+      }
+      .releaseCoverWrap {
+        max-width: 220px;
+      }
+      .releaseBtns {
+        flex-direction: column;
+      }
+      .releaseBtn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* Lyrics Modal */
+    .lyricsOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(28,11,24,0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+    
+    .lyricsOverlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .lyricsModal {
+      background: linear-gradient(135deg, 
+        rgba(14,10,8,0.95) 0%, 
+        rgba(17,12,8,0.92) 50%,
+        rgba(19,13,7,0.95) 100%
+      );
+      border-radius: var(--radius);
+      max-width: 600px;
+      width: 100%;
+      max-height: 80vh;
+      overflow: hidden;
+      box-shadow: 
+        0 30px 80px rgba(43,15,29,0.35),
+        0 0 60px rgba(255,122,26,0.2);
+      transform: scale(0.9) translateY(20px);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .lyricsOverlay.active .lyricsModal {
+      transform: scale(1) translateY(0);
+    }
+    
+    .lyricsHeader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid rgba(255,122,26,0.15);
+      background: linear-gradient(135deg, rgba(255,122,26,0.08), rgba(255,122,26,0.03));
+    }
+    
+    .lyricsHeader h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--text), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .lyricsClose {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,122,26,0.1);
+      color: var(--pink);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    
+    .lyricsClose:hover {
+      background: rgba(255,122,26,0.2);
+      transform: scale(1.1);
+    }
+    
+    .lyricsBody {
+      padding: 24px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    
+    .lyricstexxt {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--text);
+      white-space: pre-wrap;
+    }
+    
+    .lyricstexxt .chorus {
+      color: var(--pink);
+      font-weight: 600;
+    }
+
+    /* Floating WhatsApp Button */
+    .waFloat{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 500;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background: linear-gradient(135deg, #ff9d2c 0%, #ff6a00 55%, #1a1a1a 100%);
+      background-size: 200% 200%;
+      box-shadow:
+        0 12px 32px rgba(255,122,26,0.4),
+        0 6px 16px rgba(0,0,0,0.25),
+        inset 0 1px 0 rgba(255,150,80,0.25);
+      border: 1px solid rgba(255,122,26,0.25);
+      animation: gradientShift 3s ease infinite, waPulse 2.4s ease-in-out infinite;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .waFloat:hover{
+      transform: translateY(-3px) scale(1.06);
+      box-shadow:
+        0 18px 42px rgba(255,122,26,0.5),
+        0 10px 22px rgba(0,0,0,0.3);
+    }
+    .waFloat svg{
+      width: 30px;
+      height: 30px;
+      fill: #fff;
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes waPulse{
+      0%, 100% { box-shadow: 0 12px 32px rgba(255,122,26,0.4), 0 6px 16px rgba(0,0,0,0.25), 0 0 0 0 rgba(255,122,26,0.45); }
+      50% { box-shadow: 0 12px 32px rgba(255,122,26,0.4), 0 6px 16px rgba(0,0,0,0.25), 0 0 0 12px rgba(255,122,26,0); }
+    }
+    .waTooltip{
+      position: absolute;
+      right: 72px;
+      top: 50%;
+      transform: translateY(-50%) translateX(6px);
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 10px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+    .waTooltip::after{
+      content:'';
+      position:absolute;
+      left:100%;
+      top:50%;
+      transform:translateY(-50%);
+      border:6px solid transparent;
+      border-left-color:#1a1a1a;
+    }
+    .waFloat:hover .waTooltip{
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+    @media (max-width: 520px){
+      .waFloat{ width:54px; height:54px; right:14px; bottom:14px; }
+      .waFloat svg{ width:26px; height:26px; }
+      .waTooltip{ display:none; }
+    }
+  </style>
+
+<style id="monica-reading-highlight-style">
+        .monica-reading-highlight {
+          animation: fadeInOut 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInOut {
+          0%, 100% { background-color: transparent; }
+          30%, 70% { background-color: rgba(69, 255, 2, 0.2); }
+        }
+      </style>
+      </head>
+<body monica-id="ofpnmcalabcbjgholdjcjblkibolbppb" monica-version="9.0.5">
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/+529842135552" class="waFloat" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+    <span class="waTooltip">Escríbenos</span>
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.7 4.61 1.902 6.478L4 29l7.72-1.868A11.94 11.94 0 0 0 16.001 27C22.63 27 28 21.627 28 15S22.63 3 16.001 3zm6.997 16.9c-.302.848-1.502 1.55-2.454 1.75-.652.138-1.502.248-4.366-.938-3.664-1.518-6.024-5.238-6.208-5.482-.176-.244-1.478-1.966-1.478-3.75 0-1.784.936-2.66 1.268-3.024.302-.33.658-.412.878-.412.22 0 .44.002.632.012.204.01.478-.078.746.57.302.73.994 2.514 1.082 2.696.088.182.146.396.03.638-.116.244-.174.396-.346.612-.174.216-.364.482-.52.648-.174.184-.354.384-.152.752.202.368.9 1.484 1.932 2.404 1.328 1.184 2.446 1.552 2.812 1.726.366.174.58.148.794-.088.214-.236.914-1.066 1.16-1.432.244-.366.49-.304.822-.182.332.122 2.11.996 2.47 1.178.36.182.6.272.688.424.088.152.088.878-.214 1.726z"/>
+    </svg>
+  </a>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop="" preload="auto">
+    <source src="song/song.m4a" type="audio/mp4">
+  </audio>
+
+  <header class="topbar" role="banner">
+    <div class="brand" aria-label="Brand">
+      <div style="font-size:40px"></div>
+      <div style="min-width:0">
+        <div class="name">SR.KAKAU</div>
+        <div class="tag" data-i18n="tagline"></div>
+      </div>
+    </div>
+    
+    <!-- Desktop Navigation -->
+    <div class="nav navDesktop" aria-label="Navigation">
+      <a href="#about" data-i18n="nav_about">Proyecto</a>
+      <a href="#collabs" class="navCollab" data-i18n="nav_collabs">Proceso</a>
+      <a href="https://wa.me/+529842135552" target="_blank" class="navVip" data-i18n="nav_vip">CLUB KAKAU</a>
+      <a href="#screens" data-i18n="nav_screens">FOTOS</a>
+      <button class="ghostBtn" id="openLang" aria-haspopup="dialog" aria-controls="langModal">🌐<span data-i18n="nav_lang">IDIOMA</span></button>
+    </div>
+    
+    <!-- Mobile Controls -->
+    <div class="mobileControls">
+      
+      <a href="https://wa.me/+529842135552" target="_blank" class="mobileQuickBtn collabQuick" target="_blank">ORDER NOW</a>
+      <button class="mobileQuickBtn langQuick" id="openLangQuick">🌐</button>
+      <button class="burgerBtn" id="burgerBtn" aria-label="Open menu">
+        <span class="burgerLine"></span>
+        <span class="burgerLine"></span>
+        <span class="burgerLine"></span>
+      </button>
+    </div>
+    
+    <a class="Btn" href="https://wa.me/+529842135552" target="_blank" rel="noopener" aria-label=" VIP" data-i18n="go_private">WhatsApp</a>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobileMenu" id="mobileMenu">
+    <button class="mobileMenuClose" id="closeMobileMenu" aria-label="Close menu">✕</button>
+    <div class="mobileMenuContent">
+      <a href="#about" class="mobileMenuItem" data-i18n="nav_about">PROYECT</a>
+      <a href="https://wa.me/+529842135552" class="mobileMenuItem navCollab" data-i18n="nav_collabs">ORDER NOW</a>
+      <a href="https://wa.me/+529842135552" class="mobileMenuItem navVip" data-i18n="nav_vip">CLUB KAKAU</a>
+      <a href="#screens" class="mobileMenuItem" data-i18n="nav_screens">FOTOS</a>
+      <button class="mobileMenuItem" id="openLangMobile">🌐 <span data-i18n="nav_lang">IDIOMA</span></button>
+    </div>
+  </div>
+
+  <main class="wrap" role="main">
+
+
+
+    <!-- VIP HERO SECTION -->
+    <section id="vip" class="card vipHero">
+      
+      <div class="vipHeroGrid">
+        <div class="vipHeroContent">
+          <div class="vipBadge" data-i18n="headline">
+            <span></span> DESCUBRE NUESTROS PRODUCTOS <span></span>
+          </div>
+          <h1 class="vipTitle" data-i18n="headline">Compra al mayoreo o al menudeo </h1>
+
+          <div class="vipCta">
+            <a class="vipBtnPrimary" href="https://wa.me/+529842135552" target="_blank" rel="noopener">
+              <span class="vipBtnGlow"></span>
+              <span class="vipBtnContent">🌟<span data-i18n="cta"> CLUB KAKAU </span></span>
+            </a>
+            <button class="vipCopyLink" id="copyLink">
+              🔗 <span data-i18n="copy">Copiar link</span>
+            </button>
+          </div>
+
+          <div class="vipNote" data-i18n="note18">CLUB KAKAU</div>
+        </div>
+
+        <div class="vipHeroImage">
+          <a href="https://wa.me/+529842135552" target="_blank" rel="noopener" class="vipImageFrame">
+            <img src="assets/photos/cacao9.jpg" alt="" loading="eager">
+            <div class="vipImageOverlay">
+              <span class="vipImageCta"></span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+
+
+    <!-- ============ MODALS ============ -->
+<!-- Image / photo lightbox 
+<div class="modal-overlay modal-overlay--img" id="imgOverlay" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="modal-box modal-box--img">
+    <button class="modal-close modal-close--img" id="closeImg" aria-label="Close photo">×</button>
+    <div class="modal-head modal-head--img">
+      <span id="imgTitle">Photo</span>
+    </div>
+    <img id="imgFull" src="" alt="" class="modal-img">
+    <div class="modal-img-nav" id="imgNav">
+      <button class="btn-text" id="imgPrev" aria-label="Previous photo">← Prev</button>
+      <span class="modal-img-counter"><span id="imgCurrent">1</span> / <span id="imgTotal">1</span></span>
+      <button class="btn-text" id="imgNext" aria-label="Next photo">Next →</button>
+    </div>
+  </div>
+</div>
+-->
+   <!-- PROYECTO SECTION -->
+    <section id="about" class="card hero">
+      <div class="aboutGrid">
+        <div class="aboutText">
+          <h1 data-i18n="about_title">Hola Bienvenido al club del cacao</h1>
+          <div class="aboutTagline" data-i18n="about_tagline">Semillas • Prensado • Molido</div>
+          <div class="bio">
+            <div class="aboutStats" data-i18n="collab_7"> <span data-i18n=""></span><span data-i18n="">
+                 <br>
+              Kakau nació del amor por la tierra maya y el deseo de compartir con el mundo uno de sus tesoros más preciados: el cacao. Somos productores directos, lo que significa que acompañamos cada etapa del proceso —desde la floración del árbol de cacao hasta el producto final que llega a tus manos— con dedicación artesanal y respeto por los métodos tradicionales que se han transmitido de generación en generación en esta región.
+              <br>
+              Creemos que el buen cacao no se apura. Por eso fermentamos, secamos y tostamos cada cosecha con tiempos naturales, cuidando que conserve todo su sabor, aroma y propiedades. No usamos atajos industriales: preferimos el ritmo de la tierra al ritmo de la producción masiva.
+              <br><br>
+              Nuestra misión: Preservar la tradición cacaotera de la Riviera Maya, ofreciendo productos 100% naturales y de la más alta calidad, mientras apoyamos a las familias productoras y las prácticas agrícolas sostenibles de la región.</span></div>
+          </div>
+
+    <section id="proof" class="card">
+
+      <div class="statsGrid" aria-label="Key metrics">
+        <div class="stat statGrow">
+          <div class="num"><span class="statPulse">CHOCOLATE</span> <span class="statArrow"></span></div>
+          <div class="lbl" data-i18n="stat_followers">Elaborado con cacao 100% puro, en distintos porcentajes y con ingredientes naturales de la región.</div>
+        </div>
+        <div class="stat statGrow">
+          <div class="num"><span class="statPulse">EN POLVO</span> <span class="statArrow"></span></div>
+          <div class="lbl" data-i18n="stat_views">Ideal para bebidas tradicionales, repostería o batidos, sin azúcares ni aditivos añadidos.</div>
+        </div>
+        <div class="stat">
+          <div class="num">NISB</div>
+          <div class="lbl" data-i18n="stat_interactions">Trozos de cacao tostado, perfectos como snack saludable o topping.</div>
+        </div>
+        <div class="stat">
+          <div class="num">PASTA</div>
+          <div class="lbl" data-i18n="stat_visits">Inspiradas en recetas ancestrales mayas, para disfrutar caliente o fría./div>
+        </div>
+      </div>
+    </section>
+          
+          <!-- VIP Button in About -->
+          <a href="https://wa.me/+529842135552" target="_blank" rel="noopener" class="aboutVipBtn">
+            <span class="aboutVipGlow"></span>
+            <span class="aboutVipIcon">🌟</span>
+            <span class="aboutVipText">
+              <span class="aboutVipTitle" data-i18n="vip_"></span>
+              <span class="aboutVipSub" data-i18n="vip_exclusive">CLUB DEL CACAO EN PLAYA DEL CARMEN</span>
+            </span>
+            <span class="aboutVipArrow">→</span>
+          </a>
+        </div>
+        <div class="galleryBox">
+          <div class="gallerySlider">
+            <div class="galleryTrack" id="aboutGalleryTrack" style="transform: translateX(-400%);">
+              <img src="assets/photos/cacao1.jpg" alt="cacao playa del carmen" loading="lazy" class="">
+              <img src="assets/photos/cacao2.jpg" alt="cacao playa del carmen" loading="lazy" class="">
+              <img src="assets/photos/cacao3.jpg" alt="cacao playa del carmen" loading="lazy" class="">
+              <img src="assets/photos/cacao4.jpg" alt="cacao playa del carmen" loading="lazy" class="">
+              <img src="assets/photos/cacao5.jpg" alt="cacao playa del carmen" loading="lazy" class="active">
+              <img src="assets/photos/cacao6.jpg" alt="cacao playa del carmen" loading="lazy" class="">
+              <img src="assets/photos/cacao7.jpg" alt="cacao playa del carmen" loading="lazy" class="">
+              <img src="assets/photos/cacao8.jpg" alt="cacao playa del carmen" loading="lazy" class="">
+            </div>
+            <button class="galleryArrow prev" id="aboutPrev" type="button">‹</button>
+            <button class="galleryArrow next" id="aboutNext" type="button">›</button>
+          </div>
+          <div class="galleryDots" id="aboutDots">
+            <span class="galleryDot"></span><span class="galleryDot"></span><span class="galleryDot"></span><span class="galleryDot"></span><span class="galleryDot active"></span><span class="galleryDot"></span><span class="galleryDot"></span><span class="galleryDot"></span></div>
+        </div>
+      </div>
+    </section>
+
+
+
+        <section id="about" class="card hero">
+      <div class="aboutGrid">
+        <div class="aboutText">
+          <div class="bio">
+        </div>
+  <div class="aboutStats" data-i18n="collab_8"> <span data-i18n=""></span>
+    <span data-i18n="">🌱 Origen genuino — Cacao cultivado y cosechado en la Riviera Maya</span>
+  </div>
+  <div class="aboutStats" data-i18n="collab_9"> <span data-i18n=""></span>
+    <span data-i18n="">🤲 Proceso artesanal — Cada paso hecho con cuidado, sin prisas<br></span>
+  </div>
+  <div class="aboutStats" data-i18n="collab_10"> <span data-i18n=""></span>
+  <span data-i18n="">🌎 Sostenibilidad — Respeto por la tierra y los ciclos naturales<br></span>
+  </div>
+  <div class="aboutStats" data-i18n="collab_11"> <span data-i18n=""></span>
+    <span data-i18n="">🍫 Pureza — Sin aditivos ni procesos industriales agresivos<br>
+    </span>
+  </div>
+  <div class="aboutStats" data-i18n="collab_12"> <span data-i18n=""></span>
+  <span data-i18n=""> 🏺 Tradición maya — Honramos el legado ancestral del cacao sagrado</span>
+  </div>
+
+          </div>
+
+      </div>
+    </section>
+
+
+    <!-- kakau ON TOP RELEASE -->
+    <section class="card releaseCard" aria-label="x">
+      <div class="releaseGrid">
+        <div class="releaseCoverWrap">
+          <a href="https://linktr.ee/kakau_kakau" target="_blank" rel="noopener" class="releaseCoverLink">
+            <div class="releaseCoverShadow"></div>
+            <img src="assets/photos/cacao9.jpg" alt="kakau kakau" class="releaseCover">
+          
+          </a>
+        </div>
+        <div class="releaseContent">
+          <div class="releaseLabel" data-i18n="nav_about">PROYECTO</div>
+          <h2 class="releaseTitle" data-i18n="sup" >CACAO NATURAL ORGANICO </h2>
+          <p class="releaseSubtitle" data-i18n="music">xxxxxxxxxxxxxxx</p>
+          <div class="releaseBtns">
+            <a href="https://wa.me/+529842135552" target="_blank" rel="noopener" data-i18n="clic_here" class="releaseBtn primary">
+              <span>▶</span> xxxxxxxxxxxxxxx
+            </a>
+            <button type="button" class="releaseBtn secondary" data-i18n="About_more" id="openLyricsBtn">
+              <span>📜ffff</span> xxxxxxxxxxxxxxx
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+    <section id="official" class="card">
+      <h2 class="sectionTitle" data-i18n="official_title">xxxxxxxxxxxxxxx</h2>
+      <p class="sectionSub" data-i18n="official_sub">xxxxxxxxxxxxxxx</p>
+      
+        <div class="officialLinks">
+          <a class="officialBtn" href="https://www.instagram.com/sr.kakau" target="_blank" rel="noopener">
+          <div class="left">
+            <svg class="socialIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+            Instagram <span class="mono">@Sr.Kakau</span>
+          </div>
+            <span class="tag">Oficial</span>
+          </a>
+
+          <a class="officialBtn" href="https://www.instagram.com/sr.kakau" target="_blank" rel="noopener">
+          <div class="left">
+            <svg class="socialIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"></path></svg>
+            TikTok <span class="mono">@Sr.kakau</span>
+          </div>
+            <span class="tag">Oficial</span>
+          </a>
+        <a class="officialBtn" href="https://wa.me/+529842135552" target="_blank" rel="noopener">
+          <div class="left">
+            <svg class="socialIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path></svg>
+            WhatsApp <span class="mono">+52 984 2135 552</span>
+        </div>
+          <span class="tag">Oficial</span>
+        </a>
+      </div>
+
+        <div class="fakeNotice" data-i18n="fake_notice">⚠️ xxxxx</div>
+    </section>
+
+    <!-- COLLABS SECTION -->
+    <section id="collabs" class="card collabsCard">
+      <div class="collabsHeader">
+        <h2 data-i18n="collabs_title">ES KAKAU</h2>
+        <p data-i18n="collabs_sub">PROCESOS DE ELABORACION</p>
+      </div>
+      
+      <div class="collabsGrid">
+        <div class="collabsContent">
+          <div class="collabsList">
+            <div class="collabItem">
+              <span class="collabIcon"></span>
+              <span data-i18n="collab_1"></span>
+            </div>
+            <div class="collabItem">
+              <span class="collabIcon"></span>
+              <span data-i18n="collab_2"></span>
+            </div>
+            <div class="collabItem">
+              <span class="collabIcon"></span>
+              <span data-i18n="collab_3"></span>
+            </div>
+            <div class="collabItem">
+              <span class="collabIcon"></span>
+              <span data-i18n="collab_4"></span>
+            </div>
+            <div class="collabItem">
+              <span class="collabIcon"></span>
+              <span data-i18n="collab_5"></span>
+            </div>
+            <div class="collabItem">
+              <span class="collabIcon"></span>
+              <span data-i18n="collab_6"></span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="collabsCta">
+          <div class="collabBox">
+            <div class="collabBoxIcon">✉️</div>
+            <h3 data-i18n="collab_cta_title">Hace tu pedido</h3>
+            <p data-i18n="collab_cta_desc">✨</p>
+            <a href="mailto:sr.kakau.playa@gmail.com" class="collabEmailBtn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              sr.kakau.playa@gmail.com
+
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section id="screens" class="card">
+
+      <div class="galleryBox">
+        <div class="gallerySlider">
+          <div class="galleryTrack" id="screensGalleryTrack" style="transform: translateX(-200%);">
+
+            <img src="assets/stats/cacao1.jpg" alt="Cacao en Playa del Carmen" class="" data-idx="0" data-cap="cap_1">
+            <img src="assets/stats/cacao2.jpg" alt="Cacao en Playa del Carmen" loading="lazy" data-idx="1" data-cap="cap_2" class="">
+            <img src="assets/stats/cacao3.jpg" alt="Cacao en Playa del Carmen" loading="lazy" data-idx="2" data-cap="cap_3" class="active">
+            <img src="assets/stats/cacao4.jpg" alt="Cacao en Playa del Carmen" loading="lazy" data-idx="3" data-cap="cap_4" class="">
+            <img src="assets/stats/cacao5.jpg" alt="Cacao en Playa del Carmen" loading="lazy" data-idx="4" data-cap="cap_5" class="">
+            <img src="assets/stats/cacao6.jpg" alt="Cacao en Playa del Carmen" loading="lazy" data-idx="5" data-cap="cap_6" class="">
+            <img src="assets/stats/cacao7.jpg" alt="Cacao en Playa del Carmen" loading="lazy" data-idx="6" data-cap="cap_7" class="">
+          </div>
+        </div>
+        <div class="galleryDots" id="screensDots">
+          <button class="galleryDot" aria-label="Go to slide 1"></button>
+          <button class="galleryDot" aria-label="Go to slide 2"></button>
+          <button class="galleryDot" aria-label="Go to slide 3"></button>
+          <button class="galleryDot" aria-label="Go to slide 4"></button>
+          <button class="galleryDot" aria-label="Go to slide 5"></button>
+          <button class="galleryDot" aria-label="Go to slide 6"></button>
+          <button class="galleryDot" aria-label="Go to slide 7"></button>
+        </div>
+
+        <div class="galleryCaption" id="screensCaption" data-i18n="cap_1">Views breakdown</div>
+      </div>
+    </section>
+
+    <div class="foot">
+      <a href="#" class="backToTop">
+        <span class="backToTopGlow"></span>
+        <span class="backToTopContent" data-i18n="back_to_top">VOLVER AL INICIO</span>
+      </a>
+      <div class="footText">© <span id="year">2026</span> Todos los derechos registrados · <a href="#official" style="text-decoration:underline" data-i18n="verify_link">Cuentas Verificadas</a></div>
+      <div class="footText" style="margin-top:8px;margin-bottom:2% ;font-size:11px; opacity:0.6" data-i18n="provider_info">Sr.Kakau</div>
+    </div>
+  </main>
+
+  <!-- Language modal -->
+  <div class="modalOverlay" id="langOverlay" role="dialog" aria-modal="true" aria-labelledby="langTitle">
+    <div class="modal" id="langModal">
+      <div class="modalTop">
+        <div class="title" id="langTitle" data-i18n="lang_title"> Elije Idioma</div>
+        <button class="closeBtn" id="closeLang" aria-label="Close">X</button>
+      </div>
+      <div class="sub" style="margin-top:8px" data-i18n="lang_sub">Solo cambia el texto, el contenido es el mismo.</div>
+      <div class="langGrid" id="langGrid">
+      </div>
+    </div>
+  </div>
+
+  <!-- Lyrics modal -->
+  <div class="lyricsOverlay" id="lyricsOverlay" role="dialog" aria-modal="true">
+    <div class="lyricsModal">
+      <div class="lyricsHeader" data-i18n="lyricstextt">
+        <h3 data-i18n="lyricstextt"> Filosofia de Sr. Kakau</h3>
+        <button class="lyricsClose" id="closeLyrics" aria-label="Close">✕</button>
+      </div>
+      <div class="lyricsBody" data-i18n="lyricstexxt">
+        <div class="lyricstexxt" data-i18n="lyricstexxt">En Kakau cultivamos y transformamos el cacao con las manos, el tiempo y el respeto que esta semilla sagrada merece. Ubicados en el corazón de la Riviera Maya, trabajamos directamente con la tierra que durante siglos ha dado vida al alimento de los dioses, como lo llamaban nuestros ancestros. Cada barra, cada polvo, cada producto que sale de nuestras manos lleva consigo una historia: la del cacao maya, cultivado con paciencia, cosechado con cuidado y elaborado sin prisas. </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image modal with navigation -->
+  <div class="modalOverlay" id="imgOverlay" role="dialog" aria-modal="true" aria-labelledby="imgTitle">
+    <div class="modal imgModal">
+      <div class="modalTop">
+        <div class="title" id="imgTitle" data-i18n="zoom_title">Sr. Kakau</div>
+        <button class="closeBtn" id="closeImg" aria-label="Close">✕</button>
+      </div>
+      <div style="height:12px"></div>
+      <img id="imgFull" src="" alt="Sr. Kakau">
+      <div class="imgModalNav">
+        <button class="imgNavBtn" id="imgPrev">← <span data-i18n="prev_btn">Anterior</span></button>
+        <span class="imgCounter"><span id="imgCurrent">1</span> / <span id="imgTotal">7</span></span>
+        <button class="imgNavBtn" id="imgNext"><span data-i18n="next_btn">Siguiente</span> →</button>
+      </div>
+      <div class="hint" data-i18n="zoom_hint">Consejo: utilice las flechas para navegar</div>
+    </div>
+  </div>
+
+  <script>
+    // Wait for DOM to be ready
+    document.addEventListener('DOMContentLoaded', function() {
+      initPage();
+    });
+
+    const TG_LINK = "https://wa.me/+529842135552";
+    const LANGS = [
+      { code:"es", label:"ES" },
+      { code:"en", label:"EN" },
+      { code:"pt-BR", label:"BR" },
+      { code:"fr", label:"FR" },
+      { code:"de", label:"DE" },
+      { code:"it", label:"IT" },
+      { code:"ar", label:"AR" },
+      { code:"ru", label:"RU" },
+      { code:"ja", label:"日本語" },
+      { code:"zh", label:"中文" },
+      { code:"ko", label:"한국어" },
+    ];
+
+    const I18N = {
+// Traducciones completas para Kakau
+// NOTA: en tu lista de idiomas, los labels de "zh" y "ja" estaban invertidos
+// (zh -> "日本語" es japonés; ja -> "中文" es chino). Aquí traduje según el
+// código real: zh = chino, ja = japonés. Revisa/corrige los labels en tu UI.
+
+  es: {
+    sup: "El poder natural del cacao 🌿",
+    tagline: "Playa del Carmen",
+    nav_about: "Proyecto", nav_vip: "HACE TU PEDIDO", nav_proof: "Opiniones", nav_screens: "Fotos", nav_lang: "Idioma", nav_collabs: "Proceso", go_private: "CLUB KAKAU",
+    about_title: "Del árbol al chocolate, honrando cada semilla",
+    about_tagline: "SR. KAKAU",
+    about_intro: "Cacao 100% Riviera Maya, cultivado con tradición y elaborado a mano.",
+    about_bio: "No te quedes sin probarlo",
+    official_title: "✅ Redes sociales",
+    fake_notice: "Estos son nuestros canales de contacto.",
+    headline: "CACAO 100% NATURAL",
+    music: "✨ Rico en antioxidantes: contiene flavonoides, compuestos que ayudan a proteger las células frente al estrés oxidativo, es fuente de minerales: aporta minerales como magnesio, hierro, cobre y manganeso.El cacao combina tradición, sabor y riqueza nutricional.",
+    subhead: "Pruébalo",
+    cta: "Haz tu pedido", cta_back: "Volver",
+    copy: "+529842135552", copied: "¡Copiado!",
+    note18: "Stock disponible. Consulta por productos derivados",
+    chip_proof: "Reseña", chip_screens: "Foto",
+    inside_title: "¿Qué hay para pedir hoy?",
+    inside_1: "Solo para los que aman el cacao",
+    inside_2: "Elige cacao natural",
+    inside_3: "Detrás de cada producto hay amor",
+    inside_4: "Cacao de altísima calidad",
+    how_title: "Cómo funciona:",
+    how_1: "Toca \"Haz tu pedido\" → se abre WhatsApp",
+    how_2: "Únete a nuestro canal y al Club Kakau para obtener descuentos",
+    how_3: "¡Listo! Ya puedes hacer tu pedido",
+    proof_title: "Productos en stock",
+    proof_sub: "Ofrecemos productos 100% naturales y de la más alta calidad, mientras apoyamos a las familias productoras",
+    proof_growing: "Calidad de primer nivel",
+    collabs_title: "Procesos del cacao",
+    collabs_sub: "Cada barra, cada polvo, cada producto que sale de nuestras manos lleva consigo una historia",
+    collab_1: "Cultivo — Trabajamos con árboles de cacao cultivados bajo sombra, en policultivo, respetando el ecosistema selvático que rodea a la Riviera Maya.",
+    collab_2: "Cosecha — Las mazorcas se recolectan a mano, seleccionando solo las que alcanzan el punto óptimo de maduración.",
+    collab_3: "Fermentación — Las semillas se fermentan de forma natural durante varios días, un paso clave que desarrolla el sabor característico del cacao.",
+    collab_4: "Secado — Secado al sol, lento y natural, para conservar los aceites esenciales y aromas propios de la semilla.",
+    collab_5: "Tostado y molienda — Tostamos con precisión artesanal y molemos hasta obtener la pasta o el polvo de cacao puro.",
+    collab_6: "Elaboración — Transformamos el cacao en nuestros productos finales, cuidando cada receta como si fuera la primera vez.",
+    collab_7: "Kakau nació del amor por la tierra maya y el deseo de compartir con el mundo uno de sus tesoros más preciados: el cacao. Somos productores directos, lo que significa que acompañamos cada etapa del proceso —desde la floración del árbol de cacao hasta el producto final que llega a tus manos— con dedicación y respeto por los métodos tradicionales que se han transmitido de generación en generación en esta region. Creemos que el buen cacao no se apura. Por eso fermentamos, secamos y tostamos cada cosecha cuidando que cada semilla conserve todo su sabor aroma y propiedades. No usamos atajos industriales, preferimos el ritmo de la tierra al ritmo de la producción masiva. Nuestra misión  Preservar la tradición cacaotera de la Riviera Maya, ofreciendo productos 100 % naturales y de la más alta calidad, mientras apoyamos a las familias productoras y las prácticas agrícolas sostenibles de la región.",
+    collab_8:"🌱 Origen genuino — Cacao cultivado y cosechado en la Riviera Maya",
+    collab_9:"🤲 Proceso artesanal — Cada paso hecho con cuidado, sin prisas",
+    collab_10:"🌎 Sostenibilidad — Respeto por la tierra y los ciclos naturales",
+    collab_11:"🍫 Pureza — Sin aditivos ni procesos industriales agresivos",
+    collab_12:"🏺 Tradición maya — Honramos el legado ancestral del cacao sagrado",
+    collab_cta_title: "Pide por correo",
+    collab_cta_desc: "También puedes solicitar nuestro catálogo de productos por e-mail",
+    official_sub: "Nos ubicamos en Playa del Carmen. Hacemos envios rapidos a toda la Riviera Maya",
+    statPulse:"CH",
+    stat_followers: "Elaborado con cacao 100% puro de la region",
+    stat_reach: "Ideal para bebidas tradicionales, repostería o batidos, sin azúcares ni aditivos añadidos.",
+    stat_views: "Trozos de cacao tostado, perfectos como snack saludable o topping.",
+    stat_interactions: "Inspiradas en recetas ancestrales mayas, para disfrutar caliente o fría.",
+    stat_visits: "Materia prima pura de cacao, ideal para uso profesional o repostería casera.",
+    bikini_title: "CLUB DEL CACAO:",
+    bikini_desc: "¡Es maravillosamente rico!",
+    vip_: "CLUB DEL CACAO",
+    vip_exclusive: "Haz tu pedido y descubre nuestros productos",
+    proof_meta: "Un compromiso con la tierra, con las comunidades cacaoteras y con la preservación de una tradición milenaria",
+    screens_title: "Cultivado con tradición, elaborado con alma",
+    screens_sub: "Sé parte y conoce los beneficios del cacao",
+    screens_verified: "Pide tu cacao en polvo",
+    cap_1: "Cosecha fresca de la Riviera Maya", cap_2: "Fermentación natural, paso a paso", cap_3: "Secado lento al sol", cap_4: "Tostado artesanal", cap_5: "Molienda hasta obtener cacao puro", cap_6: "Chocolate listo para disfrutar", cap_7: "Directo del productor a tu mesa",
+    lang_title: "Elige idioma",
+    lang_sub: "Esto solo cambia el texto.",
+    lyricstextt:"Filosofia de Sr.Kakau",
+    lyricstexxt:"En Kakau cultivamos y transformamos el cacao con las manos, el tiempo y el respeto que esta semilla sagrada merece. Ubicados en el corazón de la Riviera Maya, trabajamos directamente con la tierra que durante siglos ha dado vida al alimento de los dioses, como lo llamaban nuestros ancestros. Cada barra, cada polvo, cada producto que sale de nuestras manos lleva consigo una historia: la del cacao maya, cultivado con paciencia, cosechado con cuidado y elaborado sin prisas.",
+    zoom_title: "Fotos",
+    zoom_hint: "Tip: usa las flechas para navegar o haz zoom en el navegador.",
+    prev_btn: "Anterior",
+    next_btn: "Siguiente",
+    back_to_top: "🍫 Ir arriba",
+    verify_link: "Contacto",
+    provider_info: "Sr. Kakau · ",
+    clic_here: "PIDE EL TUYO",
+    About_more: "FILOSOFIA",
+  },  
+
+  en: {
+    tagline: "Playa del Carmen",
+    nav_about: "Project", nav_vip: "ORDER NOW", nav_proof: "Reviews", nav_screens: "Photos", nav_lang: "Language", nav_collabs: "Process", go_private: "KAKAU CLUB",
+    about_title: "From tree to chocolate, honoring every seed",
+    about_tagline: "MR. KAKAU",
+    about_intro: "100% Riviera Maya cacao, grown with tradition and handmade.",
+    about_bio: "Don't miss out on trying it",
+    official_title: "✅ Social media",
+    fake_notice: "These are our official contact channels.",
+    headline: "100% NATURAL CACAO",
+    music: "Turn on sound",
+    subhead: "Try it",
+    cta: "Place your order", cta_back: "Back",
+    copy: "+529842135552", copied: "Copied!",
+    note18: "Stock available. Ask about derivative products",
+    chip_proof: "Review", chip_screens: "Photo",
+    inside_title: "What's on the menu today?",
+    inside_1: "Only for those who love cacao",
+    inside_2: "Choose natural cacao",
+    inside_3: "There's love behind every product",
+    inside_4: "Top-quality cacao",
+    how_title: "How it works:",
+    how_1: "Tap \"Place your order\" → WhatsApp opens",
+    how_2: "Join our channel and the Kakau Club for discounts",
+    how_3: "Done! Now you can place your order",
+    proof_title: "Products in stock",
+    proof_sub: "We offer 100% natural, top-quality products while supporting producer families",
+    proof_growing: "Top-tier quality",
+    collabs_title: "Cacao processes",
+    collabs_sub: "Every bar, every powder, every product that leaves our hands carries a story",
+    collab_1: "Growing — We work with cacao trees grown in the shade, in polyculture, respecting the jungle ecosystem surrounding the Riviera Maya.",
+    collab_2: "Harvest — The pods are hand-picked, selecting only those that reach the optimal point of ripeness.",
+    collab_3: "Fermentation — The beans ferment naturally for several days, a key step that develops cacao's signature flavor.",
+    collab_4: "Drying — Slow, natural sun-drying to preserve the seed's essential oils and aromas.",
+    collab_5: "Roasting and grinding — We roast with artisanal precision and grind until we get pure cacao paste or powder.",
+    collab_6: "Crafting — We turn the cacao into our final products, treating every recipe as if it were the first.",
+    collab_7: "Kakau was born from a love of Maya land and the desire to share one of its most treasured gifts with the world: cacao. We're direct producers, meaning we're involved in every stage — from the flowering of the cacao tree to the final product that reaches your hands — with dedication and respect for the traditional methods passed down for generations in this region. We believe good cacao can't be rushed. That's why we ferment, dry, and roast every harvest with care, so every bean keeps all of its flavor, aroma, and properties. We don't take industrial shortcuts; we prefer the rhythm of the land over mass production. Our mission: to preserve the Riviera Maya's cacao tradition, offering 100% natural, top-quality products while supporting producer families and sustainable farming practices in the region.",
+    collab_8: "🌱 Genuine origin — Cacao grown and harvested in the Riviera Maya",
+    collab_9: "🤲 Handcrafted process — Every step made with care, never rushed",
+    collab_10: "🌎 Sustainability — Respect for the land and its natural cycles",
+    collab_11: "🍫 Purity — No additives or harsh industrial processes",
+    collab_12: "🏺 Maya tradition — Honoring the ancestral legacy of sacred cacao",
+
+    collab_cta_title: "Order by email",
+    collab_cta_desc: "You can also request our product catalog by email",
+    official_sub: "We're based in Playa del Carmen. We ship fast throughout the Riviera Maya",
+    statPulse: "CH",
+    stat_followers: "Made with 100% pure cacao from the region",
+    stat_reach: "Perfect for traditional drinks, baking, or smoothies, with no added sugar or additives.",
+    stat_views: "Roasted cacao nibs, perfect as a healthy snack or topping.",
+    stat_interactions: "Inspired by ancestral Maya recipes, enjoy hot or cold.",
+    stat_visits: "Pure raw cacao, ideal for professional or home baking use.",
+    bikini_title: "CACAO CLUB:",
+    bikini_desc: "It's wonderfully delicious!",
+    vip_: "CACAO CLUB",
+    vip_exclusive: "Place your order and discover our products",
+    proof_meta: "A commitment to the land, to cacao-growing communities, and to preserving an age-old tradition",
+    screens_title: "Grown with tradition, made with soul",
+    screens_sub: "Join in and discover the benefits of cacao",
+    screens_verified: "Order your cacao powder",
+    cap_1: "Fresh harvest from the Riviera Maya", cap_2: "Natural fermentation, step by step", cap_3: "Slow sun-drying", cap_4: "Artisanal roasting", cap_5: "Grinding down to pure cacao", cap_6: "Chocolate ready to enjoy", cap_7: "Straight from the producer to your table",
+    lang_title: "Choose language",
+    lang_sub: "This only changes the text.",
+    lyricstextt:"Mr. Kakau's Philosophy",
+    lyricstexxt: "At Kakau, we grow and process cacao with the hands, time, and respect this sacred seed deserves. Based in the heart of the Riviera Maya, we work directly with the land that has, for centuries, given life to what our ancestors called the food of the gods. Every bar, every powder, every product that leaves our hands carries a story: that of Maya cacao, grown with patience, harvested with care, and crafted without rushing.",
+    zoom_title: "Photos",
+    zoom_hint: "Tip: use the arrows to navigate or zoom in your browser.",
+    prev_btn: "Previous",
+    next_btn: "Next",
+    back_to_top: "🍫 Back to top",
+    verify_link: "Verify accounts",
+    provider_info: "Mr. Kakau · ",
+    clic_here: "Click here",
+    About_more: "About us",
+  },
+
+  "pt-BR": {
+    tagline: "Playa del Carmen",
+    nav_about: "Projeto", nav_vip: "FAÇA SEU PEDIDO", nav_proof: "Avaliações", nav_screens: "Fotos", nav_lang: "Idioma", nav_collabs: "Processo", go_private: "CLUBE KAKAU",
+    about_title: "Da árvore ao chocolate, honrando cada semente",
+    about_tagline: "SR. KAKAU",
+    about_intro: "Cacau 100% Riviera Maya, cultivado com tradição e feito à mão.",
+    about_bio: "Não deixe de experimentar",
+    official_title: "✅ Redes sociais",
+    fake_notice: "Estes são nossos canais oficiais de contato.",
+    headline: "CACAU 100% NATURAL",
+    music: "Ativar som",
+    subhead: "Experimente",
+    cta: "Faça seu pedido", cta_back: "Voltar",
+    copy: "+529842135552", copied: "Copiado!",
+    note18: "Estoque disponível. Consulte sobre produtos derivados",
+    chip_proof: "Avaliação", chip_screens: "Foto",
+    inside_title: "O que tem para pedir hoje?",
+    inside_1: "Só para quem ama cacau",
+    inside_2: "Escolha cacau natural",
+    inside_3: "Por trás de cada produto há amor",
+    inside_4: "Cacau de altíssima qualidade",
+    how_title: "Como funciona:",
+    how_1: "Toque em \"Faça seu pedido\" → o WhatsApp abre",
+    how_2: "Entre no nosso canal e no Clube Kakau para ter descontos",
+    how_3: "Pronto! Agora é só fazer seu pedido",
+    proof_title: "Produtos em estoque",
+    proof_sub: "Oferecemos produtos 100% naturais e da mais alta qualidade, apoiando as famílias produtoras",
+    proof_growing: "Qualidade de primeiro nível",
+    collabs_title: "Processos do cacau",
+    collabs_sub: "Cada barra, cada pó, cada produto que sai das nossas mãos carrega uma história",
+    collab_1: "Cultivo — Trabalhamos com árvores de cacau cultivadas à sombra, em policultivo, respeitando o ecossistema da selva que envolve a Riviera Maya.",
+    collab_2: "Colheita — As vagens são colhidas à mão, selecionando apenas as que atingem o ponto ideal de maturação.",
+    collab_3: "Fermentação — As sementes fermentam naturalmente por vários dias, uma etapa essencial que desenvolve o sabor característico do cacau.",
+    collab_4: "Secagem — Secagem ao sol, lenta e natural, para preservar os óleos essenciais e aromas próprios da semente.",
+    collab_5: "Torra e moagem — Torramos com precisão artesanal e moemos até obter a pasta ou o pó de cacau puro.",
+    collab_6: "Elaboração — Transformamos o cacau em nossos produtos finais, cuidando de cada receita como se fosse a primeira vez.",
+    collab_7: "A Kakau nasceu do amor pela terra maia e do desejo de compartilhar com o mundo um dos seus tesouros mais preciosos: o cacau. Somos produtores diretos, o que significa que acompanhamos cada etapa do processo — desde a floração da árvore de cacau até o produto final que chega às suas mãos — com dedicação e respeito pelos métodos tradicionais transmitidos por gerações nesta região. Acreditamos que o bom cacau não se apressa. Por isso fermentamos, secamos e torramos cada colheita cuidando para que cada semente conserve todo o seu sabor, aroma e propriedades. Não usamos atalhos industriais; preferimos o ritmo da terra ao ritmo da produção em massa. Nossa missão: preservar a tradição cacaueira da Riviera Maya, oferecendo produtos 100% naturais e da mais alta qualidade, enquanto apoiamos as famílias produtoras e as práticas agrícolas sustentáveis da região.",
+    collab_8: "🌱 Origem genuína — Cacau cultivado e colhido na Riviera Maya",
+    collab_9: "🤲 Processo artesanal — Cada etapa feita com cuidado, sem pressa",
+    collab_10: "🌎 Sustentabilidade — Respeito pela terra e pelos ciclos naturais",
+    collab_11: "🍫 Pureza — Sem aditivos nem processos industriais agressivos",
+    collab_12: "🏺 Tradição maia — Honramos o legado ancestral do cacau sagrado",
+
+    collab_cta_title: "Peça por e-mail",
+    collab_cta_desc: "Você também pode solicitar nosso catálogo de produtos por e-mail",
+    official_sub: "Estamos em Playa del Carmen. Fazemos envios rápidos para toda a Riviera Maya",
+    statPulse: "CH",
+    stat_followers: "Feito com cacau 100% puro da região",
+    stat_reach: "Ideal para bebidas tradicionais, confeitaria ou batidas, sem açúcares nem aditivos adicionados.",
+    stat_views: "Pedaços de cacau torrado, perfeitos como lanche saudável ou cobertura.",
+    stat_interactions: "Inspiradas em receitas ancestrais maias, para saborear quente ou fria.",
+    stat_visits: "Matéria-prima pura de cacau, ideal para uso profissional ou confeitaria caseira.",
+    bikini_title: "CLUBE DO CACAU:",
+    bikini_desc: "É maravilhosamente delicioso!",
+    vip_: "CLUBE DO CACAO",
+    vip_exclusive: "Faça seu pedido e descubra nossos produtos",
+    proof_meta: "Um compromisso com a terra, com as comunidades cacaueiras e com a preservação de uma tradição milenar",
+    screens_title: "Cultivado com tradição, feito com alma",
+    screens_sub: "Faça parte e conheça os benefícios do cacau",
+    screens_verified: "Peça seu cacau em pó",
+    cap_1: "Colheita fresca da Riviera Maya", cap_2: "Fermentação natural, passo a passo", cap_3: "Secagem lenta ao sol", cap_4: "Torra artesanal", cap_5: "Moagem até obter cacau puro", cap_6: "Chocolate pronto para saborear", cap_7: "Direto do produtor para sua mesa",
+    lang_title: "Escolha o idioma",
+    lang_sub: "Isso só muda o texto.",
+    lyricstextt:"Filosofia do Sr. Kakau",
+    lyricstexxt: "Na Kakau, cultivamos e transformamos o cacau com as mãos, o tempo e o respeito que essa semente sagrada merece. Localizados no coração da Riviera Maya, trabalhamos diretamente com a terra que, por séculos, deu vida ao alimento dos deuses, como o chamavam nossos ancestrais. Cada barra, cada pó, cada produto que sai das nossas mãos carrega uma história: a do cacau maia, cultivado com paciência, colhido com cuidado e feito sem pressa.",
+    zoom_title: "Fotos",
+    zoom_hint: "Dica: use as setas para navegar ou dê zoom no navegador.",
+    prev_btn: "Anterior",
+    next_btn: "Próximo",
+    back_to_top: "🍫 Voltar ao topo",
+    verify_link: "Verificar contas",
+    provider_info: "Sr. Kakau · ",
+    clic_here: "Clique aqui",
+    About_more: "Sobre nós",
+  },
+
+  fr: {
+    tagline: "Playa del Carmen",
+    nav_about: "Projet", nav_vip: "COMMANDER", nav_proof: "Avis", nav_screens: "Photos", nav_lang: "Langue", nav_collabs: "Processus", go_private: "CLUB KAKAU",
+    about_title: "De l'arbre au chocolat, en honorant chaque graine",
+    about_tagline: "M. KAKAU",
+    about_intro: "Cacao 100% Riviera Maya, cultivé avec tradition et fait à la main.",
+    about_bio: "Ne manquez pas de l'essayer",
+    official_title: "✅ Réseaux sociaux",
+    fake_notice: "Voici nos canaux de contact officiels.",
+    headline: "CACAO 100% NATUREL",
+    music: "Activer le son",
+    subhead: "Essayez-le",
+    cta: "Passez votre commande", cta_back: "Retour",
+    copy: "+529842135552", copied: "Copié !",
+    note18: "Stock disponible. Renseignez-vous sur les produits dérivés",
+    chip_proof: "Avis", chip_screens: "Photo",
+    inside_title: "Qu'y a-t-il à commander aujourd'hui ?",
+    inside_1: "Réservé à ceux qui aiment le cacao",
+    inside_2: "Choisissez le cacao naturel",
+    inside_3: "Derrière chaque produit, il y a de l'amour",
+    inside_4: "Cacao de très haute qualité",
+    how_title: "Comment ça marche :",
+    how_1: "Appuyez sur « Passez votre commande » → WhatsApp s'ouvre",
+    how_2: "Rejoignez notre canal et le Club Kakau pour profiter de réductions",
+    how_3: "Et voilà ! Vous pouvez passer votre commande",
+    proof_title: "Produits en stock",
+    proof_sub: "Nous proposons des produits 100% naturels et de la plus haute qualité, tout en soutenant les familles productrices",
+    proof_growing: "Qualité haut de gamme",
+    collabs_title: "Les étapes du cacao",
+    collabs_sub: "Chaque tablette, chaque poudre, chaque produit qui sort de nos mains porte une histoire",
+    collab_1: "Culture — Nous travaillons avec des cacaoyers cultivés à l'ombre, en polyculture, dans le respect de l'écosystème forestier qui entoure la Riviera Maya.",
+    collab_2: "Récolte — Les cabosses sont cueillies à la main, en sélectionnant uniquement celles arrivées à parfaite maturité.",
+    collab_3: "Fermentation — Les fèves fermentent naturellement pendant plusieurs jours, une étape clé qui développe la saveur caractéristique du cacao.",
+    collab_4: "Séchage — Séchage au soleil, lent et naturel, afin de préserver les huiles essentielles et les arômes propres à la graine.",
+    collab_5: "Torréfaction et broyage — Nous torréfions avec une précision artisanale et broyons jusqu'à obtenir la pâte ou la poudre de cacao pur.",
+    collab_6: "Élaboration — Nous transformons le cacao en nos produits finaux, en soignant chaque recette comme si c'était la première fois.",
+    collab_7: "Kakau est né de l'amour de la terre maya et du désir de partager avec le monde l'un de ses trésors les plus précieux : le cacao. Nous sommes producteurs directs, ce qui signifie que nous suivons chaque étape du processus — depuis la floraison du cacaoyer jusqu'au produit final qui arrive entre vos mains — avec dévouement et respect pour les méthodes traditionnelles transmises de génération en génération dans cette région. Nous croyons qu'un bon cacao ne se précipite pas. C'est pourquoi nous fermentons, séchons et torréfions chaque récolte en veillant à ce que chaque graine conserve toute sa saveur, son arôme et ses propriétés. Nous n'utilisons aucun raccourci industriel ; nous préférons le rythme de la terre à celui de la production de masse. Notre mission : préserver la tradition cacaoyère de la Riviera Maya, en proposant des produits 100% naturels et de la plus haute qualité, tout en soutenant les familles productrices et les pratiques agricoles durables de la région.",
+    collab_8: "🌱 Origine authentique — Cacao cultivé et récolté dans la Riviera Maya",
+    collab_9: "🤲 Processus artisanal — Chaque étape réalisée avec soin, sans précipitation",
+    collab_10: "🌎 Durabilité — Respect de la terre et des cycles naturels",
+    collab_11: "🍫 Pureté — Sans additifs ni procédés industriels agressifs",
+    collab_12: "🏺 Tradition maya — Nous honorons l'héritage ancestral du cacao sacré",
+
+    collab_cta_title: "Commandez par e-mail",
+    collab_cta_desc: "Vous pouvez aussi demander notre catalogue de produits par e-mail",
+    official_sub: "Nous sommes situés à Playa del Carmen. Nous livrons rapidement dans toute la Riviera Maya",
+    statPulse: "CH",
+    stat_followers: "Élaboré avec du cacao 100% pur de la région",
+    stat_reach: "Idéal pour les boissons traditionnelles, la pâtisserie ou les smoothies, sans sucres ni additifs ajoutés.",
+    stat_views: "Éclats de cacao torréfié, parfaits comme en-cas sain ou en topping.",
+    stat_interactions: "Inspirées de recettes ancestrales mayas, à déguster chaudes ou froides.",
+    stat_visits: "Matière première pure de cacao, idéale pour un usage professionnel ou une pâtisserie maison.",
+    bikini_title: "CLUB DU CACAO :",
+    bikini_desc: "C'est merveilleusement délicieux !",
+    vip_: "CLUB DU CACAO",
+    vip_exclusive: "Passez votre commande et découvrez nos produits",
+    proof_meta: "Un engagement envers la terre, les communautés cacaoyères et la préservation d'une tradition millénaire",
+    screens_title: "Cultivé avec tradition, élaboré avec âme",
+    screens_sub: "Rejoignez-nous et découvrez les bienfaits du cacao",
+    screens_verified: "Commandez votre cacao en poudre",
+    cap_1: "Récolte fraîche de la Riviera Maya", cap_2: "Fermentation naturelle, étape par étape", cap_3: "Séchage lent au soleil", cap_4: "Torréfaction artisanale", cap_5: "Broyage jusqu'au cacao pur", cap_6: "Chocolat prêt à déguster", cap_7: "Directement du producteur à votre table",
+    lang_title: "Choisissez la langue",
+    lang_sub: "Cela ne change que le texte.",
+    lyricstexxt: "Chez Kakau, nous cultivons et transformons le cacao avec les mains, le temps et le respect que mérite cette graine sacrée. Situés au cœur de la Riviera Maya, nous travaillons directement avec la terre qui, depuis des siècles, donne vie à ce que nos ancêtres appelaient la nourriture des dieux. Chaque tablette, chaque poudre, chaque produit qui sort de nos mains porte une histoire : celle du cacao maya, cultivé avec patience, récolté avec soin et élaboré sans précipitation.",
+    zoom_title: "Photos",
+    zoom_hint: "Astuce : utilisez les flèches pour naviguer ou zoomez avec votre navigateur.",
+    prev_btn: "Précédent",
+    next_btn: "Suivant",
+    back_to_top: "🍫 Retour en haut",
+    verify_link: "Vérifier les comptes",
+    provider_info: "M. Kakau · ",
+    clic_here: "Cliquez ici",
+    About_more: "À propos de nous",
+  },
+
+  de: {
+    tagline: "Playa del Carmen",
+    nav_about: "Projekt", nav_vip: "JETZT BESTELLEN", nav_proof: "Bewertungen", nav_screens: "Fotos", nav_lang: "Sprache", nav_collabs: "Prozess", go_private: "KAKAU CLUB",
+    about_title: "Vom Baum zur Schokolade, jeder Bohne mit Respekt begegnen",
+    about_tagline: "HERR KAKAU",
+    about_intro: "100% Kakao aus der Riviera Maya, mit Tradition angebaut und von Hand verarbeitet.",
+    about_bio: "Unbedingt probieren",
+    official_title: "✅ Soziale Netzwerke",
+    fake_notice: "Dies sind unsere offiziellen Kontaktkanäle.",
+    headline: "100% NATÜRLICHER KAKAO",
+    music: "Ton einschalten",
+    subhead: "Probier's",
+    cta: "Jetzt bestellen", cta_back: "Zurück",
+    copy: "+529842135552", copied: "Kopiert!",
+    note18: "Vorrätig. Fragen Sie nach Nebenprodukten",
+    chip_proof: "Bewertung", chip_screens: "Foto",
+    inside_title: "Was gibt's heute zu bestellen?",
+    inside_1: "Nur für echte Kakaoliebhaber",
+    inside_2: "Wähle natürlichen Kakao",
+    inside_3: "Hinter jedem Produkt steckt Liebe",
+    inside_4: "Kakao von höchster Qualität",
+    how_title: "So funktioniert's:",
+    how_1: "Tippe auf „Jetzt bestellen“ → WhatsApp öffnet sich",
+    how_2: "Tritt unserem Kanal und dem Kakau Club bei, um Rabatte zu erhalten",
+    how_3: "Fertig! Jetzt kannst du bestellen",
+    proof_title: "Produkte auf Lager",
+    proof_sub: "Wir bieten 100% natürliche Produkte von höchster Qualität und unterstützen dabei die Erzeugerfamilien",
+    proof_growing: "Erstklassige Qualität",
+    collabs_title: "Der Kakaoprozess",
+    collabs_sub: "Jede Tafel, jedes Pulver, jedes Produkt aus unseren Händen erzählt eine Geschichte",
+    collab_1: "Anbau — Wir arbeiten mit Kakaobäumen, die im Schatten und im Mischanbau wachsen, im Einklang mit dem Dschungel-Ökosystem der Riviera Maya.",
+    collab_2: "Ernte — Die Kakaofrüchte werden von Hand gepflückt, wobei nur die reifsten ausgewählt werden.",
+    collab_3: "Fermentation — Die Bohnen fermentieren mehrere Tage lang auf natürliche Weise – ein entscheidender Schritt, der den charakteristischen Kakaogeschmack entwickelt.",
+    collab_4: "Trocknung — Langsame, natürliche Sonnentrocknung, um die ätherischen Öle und Aromen der Bohne zu bewahren.",
+    collab_5: "Rösten und Mahlen — Wir rösten mit handwerklicher Präzision und mahlen, bis reine Kakaomasse oder Kakaopulver entsteht.",
+    collab_6: "Verarbeitung — Wir verwandeln den Kakao in unsere fertigen Produkte und behandeln jedes Rezept, als wäre es das erste Mal.",
+    collab_7: "Kakau entstand aus der Liebe zum Land der Maya und dem Wunsch, einen ihrer wertvollsten Schätze mit der Welt zu teilen: den Kakao. Wir sind Direkterzeuger, das heißt, wir begleiten jeden Schritt des Prozesses – von der Blüte des Kakaobaums bis zum fertigen Produkt in deinen Händen – mit Hingabe und Respekt vor den traditionellen Methoden, die in dieser Region von Generation zu Generation weitergegeben wurden. Wir glauben, dass guter Kakao keine Eile verträgt. Deshalb fermentieren, trocknen und rösten wir jede Ernte sorgfältig, damit jede Bohne ihr volles Aroma, ihren Geschmack und ihre Eigenschaften behält. Wir setzen auf keine industriellen Abkürzungen und bevorzugen den Rhythmus der Natur gegenüber der Massenproduktion. Unsere Mission: die Kakaotradition der Riviera Maya zu bewahren, indem wir 100% natürliche Produkte höchster Qualität anbieten und dabei Erzeugerfamilien sowie nachhaltige Landwirtschaft in der Region unterstützen.",
+    collab_8: "🌱 Echte Herkunft — Kakao aus Anbau und Ernte in der Riviera Maya",
+    collab_9: "🤲 Handwerklicher Prozess — Jeder Schritt mit Sorgfalt, ohne Eile",
+    collab_10: "🌎 Nachhaltigkeit — Respekt vor Land und natürlichen Kreisläufen",
+    collab_11: "🍫 Reinheit — Ohne Zusatzstoffe oder aggressive industrielle Verfahren",
+    collab_12: "🏺 Maya-Tradition — Wir ehren das Erbe des heiligen Kakaos",
+
+    collab_cta_title: "Per E-Mail bestellen",
+    collab_cta_desc: "Du kannst unseren Produktkatalog auch per E-Mail anfordern",
+    official_sub: "Wir befinden uns in Playa del Carmen. Wir liefern schnell in die gesamte Riviera Maya",
+    statPulse: "CH",
+    stat_followers: "Hergestellt aus 100% reinem Kakao aus der Region",
+    stat_reach: "Ideal für traditionelle Getränke, zum Backen oder für Smoothies, ganz ohne Zucker- oder Zusatzstoffzugabe.",
+    stat_views: "Geröstete Kakaonibs, perfekt als gesunder Snack oder Topping.",
+    stat_interactions: "Inspiriert von uralten Maya-Rezepten, warm oder kalt zu genießen.",
+    stat_visits: "Reiner Kakao-Rohstoff, ideal für den professionellen oder privaten Gebrauch beim Backen.",
+    bikini_title: "KAKAO CLUB:",
+    bikini_desc: "Wunderbar lecker!",
+    vip_: "KAKAO CLUB",
+    vip_exclusive: "Bestelle jetzt und entdecke unsere Produkte",
+    proof_meta: "Ein Engagement für das Land, die kakaoanbauenden Gemeinschaften und die Bewahrung einer jahrtausendealten Tradition",
+    screens_title: "Mit Tradition angebaut, mit Seele hergestellt",
+    screens_sub: "Sei dabei und entdecke die Vorteile von Kakao",
+    screens_verified: "Bestelle dein Kakaopulver",
+    cap_1: "Frische Ernte aus der Riviera Maya", cap_2: "Natürliche Fermentation, Schritt für Schritt", cap_3: "Langsame Sonnentrocknung", cap_4: "Handwerkliches Rösten", cap_5: "Mahlen bis zum reinen Kakao", cap_6: "Schokolade zum Genießen bereit", cap_7: "Direkt vom Erzeuger auf deinen Tisch",
+    lang_title: "Sprache wählen",
+    lang_sub: "Dies ändert nur den Text.",
+     lyricstextt: "Mr. Kakaus Philosophie",
+    lyricstexxt: "Bei Kakau bauen wir Kakao an und verarbeiten ihn mit den Händen, der Zeit und dem Respekt, den diese heilige Bohne verdient. Im Herzen der Riviera Maya arbeiten wir direkt mit dem Land, das seit Jahrhunderten das hervorbringt, was unsere Vorfahren die Speise der Götter nannten. Jede Tafel, jedes Pulver, jedes Produkt aus unseren Händen erzählt eine Geschichte: die des Maya-Kakaos, mit Geduld angebaut, sorgfältig geerntet und ohne Eile verarbeitet.",
+    zoom_title: "Fotos",
+    zoom_hint: "Tipp: Nutze die Pfeile zum Navigieren oder zoome im Browser.",
+    prev_btn: "Zurück",
+    next_btn: "Weiter",
+    back_to_top: "🍫 Nach oben",
+    verify_link: "Konten verifizieren",
+    provider_info: "Herr Kakau · ",
+    clic_here: "Hier klicken",
+    About_more: "Über uns",
+  },
+
+  it: {
+    tagline: "Playa del Carmen",
+    nav_about: "Progetto", nav_vip: "ORDINA ORA", nav_proof: "Recensioni", nav_screens: "Foto", nav_lang: "Lingua", nav_collabs: "Processo", go_private: "CLUB KAKAU",
+    about_title: "Dall'albero al cioccolato, onorando ogni seme",
+    about_tagline: "SIG. KAKAU",
+    about_intro: "Cacao 100% Riviera Maya, coltivato con tradizione e lavorato a mano.",
+    about_bio: "Non perdere l'occasione di provarlo",
+    official_title: "✅ Social network",
+    fake_notice: "Questi sono i nostri canali di contatto ufficiali.",
+    headline: "CACAO 100% NATURALE",
+    music: "Attiva audio",
+    subhead: "Provalo",
+    cta: "Fai il tuo ordine", cta_back: "Indietro",
+    copy: "+529842135552", copied: "Copiato!",
+    note18: "Disponibile in magazzino. Chiedi info sui prodotti derivati",
+    chip_proof: "Recensione", chip_screens: "Foto",
+    inside_title: "Cosa c'è da ordinare oggi?",
+    inside_1: "Solo per chi ama il cacao",
+    inside_2: "Scegli il cacao naturale",
+    inside_3: "Dietro ogni prodotto c'è amore",
+    inside_4: "Cacao di altissima qualità",
+    how_title: "Come funziona:",
+    how_1: "Tocca \"Fai il tuo ordine\" → si apre WhatsApp",
+    how_2: "Unisciti al nostro canale e al Club Kakau per ottenere sconti",
+    how_3: "Fatto! Ora puoi fare il tuo ordine",
+    proof_title: "Prodotti disponibili",
+    proof_sub: "Offriamo prodotti 100% naturali e della massima qualità, sostenendo le famiglie produttrici",
+    proof_growing: "Qualità di prim'ordine",
+    collabs_title: "I processi del cacao",
+    collabs_sub: "Ogni tavoletta, ogni polvere, ogni prodotto che esce dalle nostre mani porta con sé una storia",
+    collab_1: "Coltivazione — Lavoriamo con alberi di cacao coltivati all'ombra, in policoltura, nel rispetto dell'ecosistema della giungla che circonda la Riviera Maya.",
+    collab_2: "Raccolta — I baccelli vengono raccolti a mano, selezionando solo quelli giunti al punto ottimale di maturazione.",
+    collab_3: "Fermentazione — I semi fermentano naturalmente per diversi giorni, un passaggio chiave che sviluppa il sapore caratteristico del cacao.",
+    collab_4: "Essiccazione — Essiccazione al sole, lenta e naturale, per preservare gli oli essenziali e gli aromi propri del seme.",
+    collab_5: "Tostatura e macinazione — Tostiamo con precisione artigianale e maciniamo fino a ottenere la pasta o la polvere di cacao puro.",
+    collab_6: "Lavorazione — Trasformiamo il cacao nei nostri prodotti finali, curando ogni ricetta come fosse la prima volta.",
+    collab_7: "Kakau è nato dall'amore per la terra maya e dal desiderio di condividere con il mondo uno dei suoi tesori più preziosi: il cacao. Siamo produttori diretti, il che significa che seguiamo ogni fase del processo — dalla fioritura dell'albero di cacao fino al prodotto finale che arriva nelle tue mani — con dedizione e rispetto per i metodi tradizionali tramandati di generazione in generazione in questa regione. Crediamo che il buon cacao non si possa affrettare. Per questo fermentiamo, essicchiamo e tostiamo ogni raccolto avendo cura che ogni seme conservi tutto il suo sapore, aroma e proprietà. Non usiamo scorciatoie industriali, preferiamo il ritmo della terra a quello della produzione di massa. La nostra missione: preservare la tradizione cacaicola della Riviera Maya, offrendo prodotti 100% naturali e della massima qualità, sostenendo al contempo le famiglie produttrici e le pratiche agricole sostenibili della regione.",
+    collab_8: "🌱 Origine genuina — Cacao coltivato e raccolto nella Riviera Maya",
+    collab_9: "🤲 Processo artigianale — Ogni fase curata nei dettagli, senza fretta",
+    collab_10: "🌎 Sostenibilità — Rispetto per la terra e i cicli naturali",
+    collab_11: "🍫 Purezza — Senza additivi né processi industriali aggressivi",
+    collab_12: "🏺 Tradizione maya — Onoriamo l'eredità ancestrale del cacao sacro",
+
+    collab_cta_title: "Ordina via e-mail",
+    collab_cta_desc: "Puoi anche richiedere il nostro catalogo prodotti via e-mail",
+    official_sub: "Ci troviamo a Playa del Carmen. Effettuiamo spedizioni rapide in tutta la Riviera Maya",
+    statPulse: "CH",
+    stat_followers: "Realizzato con cacao 100% puro della regione",
+    stat_reach: "Ideale per bevande tradizionali, dolci o frullati, senza zuccheri né additivi aggiunti.",
+    stat_views: "Pezzetti di cacao tostato, perfetti come snack sano o topping.",
+    stat_interactions: "Ispirate a ricette ancestrali maya, da gustare calde o fredde.",
+    stat_visits: "Materia prima pura di cacao, ideale per uso professionale o pasticceria casalinga.",
+    bikini_title: "CLUB DEL CACAO:",
+    bikini_desc: "È meravigliosamente buono!",
+    vip_: "CLUB DEL CACAO",
+    vip_exclusive: "Fai il tuo ordine e scopri i nostri prodotti",
+    proof_meta: "Un impegno verso la terra, le comunità cacaicole e la conservazione di una tradizione millenaria",
+    screens_title: "Coltivato con tradizione, realizzato con anima",
+    screens_sub: "Partecipa e scopri i benefici del cacao",
+    screens_verified: "Ordina il tuo cacao in polvere",
+    cap_1: "Raccolto fresco della Riviera Maya", cap_2: "Fermentazione naturale, passo dopo passo", cap_3: "Essiccazione lenta al sole", cap_4: "Tostatura artigianale", cap_5: "Macinazione fino al cacao puro", cap_6: "Cioccolato pronto da gustare", cap_7: "Direttamente dal produttore alla tua tavola",
+    lang_title: "Scegli la lingua",
+    lang_sub: "Questo cambia solo il testo.",
+     lyricstextt: "La filosofia del signor Kakau",
+    lyricstexxt: "Da Kakau coltiviamo e lavoriamo il cacao con le mani, il tempo e il rispetto che questo seme sacro merita. Situati nel cuore della Riviera Maya, lavoriamo direttamente con la terra che per secoli ha dato vita a ciò che i nostri antenati chiamavano il cibo degli dei. Ogni tavoletta, ogni polvere, ogni prodotto che esce dalle nostre mani porta con sé una storia: quella del cacao maya, coltivato con pazienza, raccolto con cura e lavorato senza fretta.",
+    zoom_title: "Foto",
+    zoom_hint: "Suggerimento: usa le frecce per navigare o fai zoom nel browser.",
+    prev_btn: "Precedente",
+    next_btn: "Successivo",
+    back_to_top: "🍫 Torna su",
+    verify_link: "Verifica account",
+    provider_info: "Sig. Kakau · ",
+    clic_here: "Clicca qui",
+    About_more: "Chi siamo",
+  },
+
+  ar: {
+    tagline: "بلايا ديل كارمن",
+    nav_about: "المشروع", nav_vip: "اطلب الآن", nav_proof: "التقييمات", nav_screens: "الصور", nav_lang: "اللغة", nav_collabs: "العملية", go_private: "نادي كاكاو",
+    about_title: "من الشجرة إلى الشوكولاتة، تكريمًا لكل بذرة",
+    about_tagline: "السيد كاكاو",
+    about_intro: "كاكاو 100% من ريفييرا مايا، يُزرع بتقاليد أصيلة ويُصنع يدويًا.",
+    about_bio: "لا تفوّت تجربته",
+    official_title: "✅ حساباتنا على وسائل التواصل",
+    fake_notice: "هذه هي قنوات التواصل الرسمية الخاصة بنا.",
+    headline: "كاكاو طبيعي 100%",
+    music: "تشغيل الصوت",
+    subhead: "جرّبه",
+    cta: "اطلب الآن", cta_back: "رجوع",
+    copy: "+529842135552", copied: "تم النسخ!",
+    note18: "المخزون متوفر. استفسر عن المنتجات المشتقة",
+    chip_proof: "تقييم", chip_screens: "صورة",
+    inside_title: "ما المتاح للطلب اليوم؟",
+    inside_1: "فقط لمحبي الكاكاو",
+    inside_2: "اختر الكاكاو الطبيعي",
+    inside_3: "خلف كل منتج قصة حب",
+    inside_4: "كاكاو بأعلى جودة",
+    how_title: "كيف يعمل الأمر:",
+    how_1: "اضغط على \"اطلب الآن\" ← يفتح واتساب",
+    how_2: "انضم إلى قناتنا ونادي كاكاو للحصول على خصومات",
+    how_3: "تم! يمكنك الآن تقديم طلبك",
+    proof_title: "المنتجات المتوفرة",
+    proof_sub: "نقدّم منتجات طبيعية 100% وبأعلى جودة، مع دعمنا للأسر المنتجة",
+    proof_growing: "جودة من الطراز الأول",
+    collabs_title: "مراحل صناعة الكاكاو",
+    collabs_sub: "كل قالب، كل مسحوق، كل منتج يخرج من أيدينا يحمل قصة",
+    collab_1: "الزراعة — نعمل مع أشجار الكاكاو التي تُزرع في الظل وبنظام الزراعة المتعددة، احترامًا للنظام البيئي الغابي المحيط بريفييرا مايا.",
+    collab_2: "الحصاد — تُقطف الثمار يدويًا، مع اختيار الثمار التي بلغت النضج الأمثل فقط.",
+    collab_3: "التخمير — تُخمَّر البذور طبيعيًا لعدة أيام، وهي خطوة أساسية تطوّر نكهة الكاكاو المميزة.",
+    collab_4: "التجفيف — تجفيف بطيء وطبيعي تحت الشمس، للحفاظ على الزيوت الأساسية والروائح الخاصة بالبذرة.",
+    collab_5: "التحميص والطحن — نحمّص بدقة حرفية ونطحن حتى نحصل على عجينة أو مسحوق الكاكاو النقي.",
+    collab_6: "التصنيع — نحوّل الكاكاو إلى منتجاتنا النهائية، ونعتني بكل وصفة وكأنها المرة الأولى.",
+    collab_7: "وُلدت كاكاو من حب أرض المايا والرغبة في مشاركة العالم بأحد أثمن كنوزها: الكاكاو. نحن منتجون مباشرون، ما يعني أننا نرافق كل مرحلة من العملية — من إزهار شجرة الكاكاو حتى المنتج النهائي الذي يصل إلى يديك — بتفانٍ واحترام للأساليب التقليدية المتوارثة جيلًا بعد جيل في هذه المنطقة. نؤمن بأن الكاكاو الجيد لا يُستعجل. لذلك نخمّر ونجفف ونحمّص كل محصول بعناية لضمان احتفاظ كل بذرة بكامل نكهتها ورائحتها وخصائصها. لا نلجأ إلى الحلول الصناعية المختصرة، بل نفضّل إيقاع الأرض على إيقاع الإنتاج الضخم. مهمتنا: الحفاظ على تقاليد زراعة الكاكاو في ريفييرا مايا، وتقديم منتجات طبيعية 100% وبأعلى جودة، مع دعم الأسر المنتجة وممارسات الزراعة المستدامة في المنطقة.",
+    collab_8: "🌱 أصل أصيل — كاكاو يُزرع ويُحصد في ريفييرا مايا",
+    collab_9: "🤲 عملية حرفية — كل خطوة تُنفَّذ بعناية ودون استعجال",
+    collab_10: "🌎 الاستدامة — احترام الأرض ودوراتها الطبيعية",
+    collab_11: "🍫 النقاء — بلا إضافات أو عمليات صناعية قاسية",
+    collab_12: "🏺 تقاليد المايا — نكرّم الإرث القديم للكاكاو المقدس",
+
+    collab_cta_title: "اطلب عبر البريد الإلكتروني",
+    collab_cta_desc: "يمكنك أيضًا طلب كتالوج منتجاتنا عبر البريد الإلكتروني",
+    official_sub: "نتواجد في بلايا ديل كارمن. نوفّر شحنًا سريعًا لكل منطقة ريفييرا مايا",
+    statPulse: "CH",
+    stat_followers: "مصنوع من كاكاو نقي 100% من المنطقة",
+    stat_reach: "مثالي للمشروبات التقليدية أو الحلويات أو العصائر، دون سكر أو إضافات.",
+    stat_views: "قطع كاكاو محمّص، مثالية كوجبة خفيفة صحية أو إضافة.",
+    stat_interactions: "مستوحاة من وصفات المايا القديمة، تُقدَّم ساخنة أو باردة.",
+    stat_visits: "مادة كاكاو خام نقية، مثالية للاستخدام المهني أو المنزلي في الحلويات.",
+    bikini_title: "نادي الكاكاو:",
+    bikini_desc: "لذيذ بشكل رائع!",
+    vip_: "نادي الكاكاو",
+    vip_exclusive: "اطلب الآن واكتشف منتجاتنا",
+    proof_meta: "التزام تجاه الأرض ومجتمعات زراعة الكاكاو والحفاظ على تقليد عريق",
+    screens_title: "يُزرع بتقاليد أصيلة، ويُصنع بروح",
+    screens_sub: "كن جزءًا منا واكتشف فوائد الكاكاو",
+    screens_verified: "اطلب مسحوق الكاكاو الخاص بك",
+    cap_1: "حصاد طازج من ريفييرا مايا", cap_2: "تخمير طبيعي، خطوة بخطوة", cap_3: "تجفيف بطيء تحت الشمس", cap_4: "تحميص حرفي", cap_5: "طحن حتى الحصول على كاكاو نقي", cap_6: "شوكولاتة جاهزة للاستمتاع بها", cap_7: "مباشرة من المنتج إلى مائدتك",
+    lang_title: "اختر اللغة",
+    lang_sub: "هذا يغيّر النص فقط.",
+    lyricstextt: " فلسفة السيد كاكاو",
+    lyricstexxt: "في كاكاو، نزرع الكاكاو ونحوّله بأيدينا ووقتنا وباحترام تستحقه هذه البذرة المقدسة. نتواجد في قلب ريفييرا مايا، ونعمل مباشرة مع الأرض التي منحت الحياة على مدى قرون لما أسماه أجدادنا طعام الآلهة. كل قالب، كل مسحوق، كل منتج يخرج من أيدينا يحمل قصة: قصة كاكاو المايا، الذي يُزرع بصبر، ويُحصد بعناية، ويُصنع دون استعجال.",
+    zoom_title: "الصور",
+    zoom_hint: "نصيحة: استخدم الأسهم للتنقل أو قم بالتكبير في متصفحك.",
+    prev_btn: "السابق",
+    next_btn: "التالي",
+    back_to_top: "🍫 العودة للأعلى",
+    verify_link: "التحقق من الحسابات",
+    provider_info: "السيد كاكاو · ",
+    clic_here: "اضغط هنا",
+    About_more: "من نحن",
+  },
+
+  ru: {
+    tagline: "Плайя-дель-Кармен",
+    nav_about: "Проект", nav_vip: "СДЕЛАТЬ ЗАКАЗ", nav_proof: "Отзывы", nav_screens: "Фото", nav_lang: "Язык", nav_collabs: "Процесс", go_private: "КЛУБ KAKAU",
+    about_title: "От дерева до шоколада — с уважением к каждому зерну",
+    about_tagline: "Г-Н КАКАУ",
+    about_intro: "Какао 100% Ривьера-Майя, выращенное по традиции и сделанное вручную.",
+    about_bio: "Обязательно попробуйте",
+    official_title: "✅ Социальные сети",
+    fake_notice: "Это наши официальные каналы связи.",
+    headline: "100% НАТУРАЛЬНОЕ КАКАО",
+    music: "Включить звук",
+    subhead: "Попробуйте",
+    cta: "Сделать заказ", cta_back: "Назад",
+    copy: "+529842135552", copied: "Скопировано!",
+    note18: "Товар в наличии. Спросите о сопутствующих продуктах",
+    chip_proof: "Отзыв", chip_screens: "Фото",
+    inside_title: "Что можно заказать сегодня?",
+    inside_1: "Только для настоящих любителей какао",
+    inside_2: "Выберите натуральное какао",
+    inside_3: "За каждым продуктом стоит любовь",
+    inside_4: "Какао высочайшего качества",
+    how_title: "Как это работает:",
+    how_1: "Нажмите «Сделать заказ» → откроется WhatsApp",
+    how_2: "Присоединяйтесь к нашему каналу и клубу Kakau, чтобы получать скидки",
+    how_3: "Готово! Теперь можно сделать заказ",
+    proof_title: "Товары в наличии",
+    proof_sub: "Мы предлагаем на 100% натуральные продукты высочайшего качества, поддерживая семьи производителей",
+    proof_growing: "Качество высшего уровня",
+    collabs_title: "Процесс производства какао",
+    collabs_sub: "Каждая плитка, каждый порошок, каждый продукт, выходящий из наших рук, несёт свою историю",
+    collab_1: "Выращивание — Мы работаем с какао-деревьями, выращенными в тени, в поликультуре, с уважением к экосистеме джунглей вокруг Ривьера-Майя.",
+    collab_2: "Сбор урожая — Плоды собирают вручную, отбирая только те, что достигли оптимальной зрелости.",
+    collab_3: "Ферментация — Зёрна натурально ферментируются в течение нескольких дней — этот ключевой этап раскрывает характерный вкус какао.",
+    collab_4: "Сушка — Медленная естественная сушка на солнце, сохраняющая эфирные масла и аромат зерна.",
+    collab_5: "Обжарка и помол — Мы обжариваем с ремесленной точностью и мелем до получения чистой какао-массы или порошка.",
+    collab_6: "Производство — Мы превращаем какао в наши готовые продукты, относясь к каждому рецепту как к первому.",
+    collab_7: "Kakau родился из любви к земле майя и желания поделиться с миром одним из её самых ценных сокровищ — какао. Мы прямые производители, а значит, сопровождаем каждый этап процесса — от цветения дерева какао до готового продукта, попадающего к вам в руки, — с преданностью делу и уважением к традиционным методам, передающимся из поколения в поколение в этом регионе. Мы верим, что хорошее какао не терпит спешки. Поэтому мы ферментируем, сушим и обжариваем каждый урожай бережно, чтобы каждое зерно сохранило весь свой вкус, аромат и свойства. Мы не используем промышленные сокращения пути — предпочитаем ритм земли ритму массового производства. Наша миссия: сохранить традицию выращивания какао в Ривьера-Майя, предлагая на 100% натуральные продукты высочайшего качества и поддерживая при этом семьи производителей и устойчивые методы земледелия в регионе.",
+    collab_8: "🌱 Подлинное происхождение — какао выращено и собрано в Ривьера-Майя",
+    collab_9: "🤲 Ремесленный процесс — каждый этап выполнен с заботой, без спешки",
+    collab_10: "🌎 Устойчивость — уважение к земле и её природным циклам",
+    collab_11: "🍫 Чистота — без добавок и агрессивной промышленной обработки",
+    collab_12: "🏺 Традиция майя — мы чтим древнее наследие священного какао",
+
+    collab_cta_title: "Заказ по электронной почте",
+    collab_cta_desc: "Вы также можете запросить наш каталог продукции по электронной почте",
+    official_sub: "Мы находимся в Плайя-дель-Кармен. Быстро доставляем по всей Ривьера-Майя",
+    statPulse: "CH",
+    stat_followers: "Изготовлено из 100% чистого какао региона",
+    stat_reach: "Идеально для традиционных напитков, выпечки или смузи, без сахара и добавок.",
+    stat_views: "Кусочки обжаренного какао — отличный полезный перекус или топпинг.",
+    stat_interactions: "Вдохновлены древними рецептами майя, подавать горячими или холодными.",
+    stat_visits: "Чистое какао-сырьё, идеально для профессионального использования или домашней выпечки.",
+    bikini_title: "КЛУБ КАКАО:",
+    bikini_desc: "Это невероятно вкусно!",
+    vip_: "КЛУБ КАКАО",
+    vip_exclusive: "Сделайте заказ и откройте для себя нашу продукцию",
+    proof_meta: "Приверженность земле, сообществам, выращивающим какао, и сохранению многовековой традиции",
+    screens_title: "Выращено по традиции, сделано с душой",
+    screens_sub: "Присоединяйтесь и узнайте о пользе какао",
+    screens_verified: "Закажите какао-порошок",
+    cap_1: "Свежий урожай из Ривьера-Майя", cap_2: "Естественная ферментация, шаг за шагом", cap_3: "Медленная сушка на солнце", cap_4: "Ремесленная обжарка", cap_5: "Помол до чистого какао", cap_6: "Шоколад готов к употреблению", cap_7: "Прямо от производителя к вашему столу",
+    lang_title: "Выберите язык",
+    lang_sub: "Это меняет только текст.",
+    lyricstextt:"Философия мистера Какау",
+    lyricstexxt: "В Kakau мы выращиваем и перерабатываем какао своими руками, временем и уважением, которого заслуживает это священное зерно. Находясь в самом сердце Ривьера-Майя, мы работаем напрямую с землёй, которая веками давала жизнь тому, что наши предки называли пищей богов. Каждая плитка, каждый порошок, каждый продукт, выходящий из наших рук, несёт свою историю — историю какао майя, выращенного с терпением, собранного с заботой и произведённого без спешки.",
+    zoom_title: "Фото",
+    zoom_hint: "Совет: используйте стрелки для навигации или увеличьте масштаб в браузере.",
+    prev_btn: "Назад",
+    next_btn: "Далее",
+    back_to_top: "🍫 Наверх",
+    verify_link: "Проверить аккаунты",
+    provider_info: "Г-н Какау · ",
+    clic_here: "Нажмите здесь",
+    About_more: "О нас",
+  },
+
+  zh: {
+    tagline: "普拉亚德尔卡曼",
+    nav_about: "项目", nav_vip: "立即下单", nav_proof: "评价", nav_screens: "照片", nav_lang: "语言", nav_collabs: "工艺流程", go_private: "卡考俱乐部",
+    about_title: "从树到巧克力，致敬每一粒种子",
+    about_tagline: "卡考先生",
+    about_intro: "100% 玛雅里维埃拉可可，以传统方式种植，纯手工制作。",
+    about_bio: "不容错过的美味",
+    official_title: "✅ 社交媒体",
+    fake_notice: "以下是我们的官方联系渠道。",
+    headline: "100% 天然可可",
+    music: "开启声音",
+    subhead: "立即体验",
+    cta: "立即下单", cta_back: "返回",
+    copy: "+529842135552", copied: "已复制！",
+    note18: "现货充足，欢迎咨询衍生产品",
+    chip_proof: "评价", chip_screens: "照片",
+    inside_title: "今天有什么可以下单？",
+    inside_1: "只为真正热爱可可的人",
+    inside_2: "选择天然可可",
+    inside_3: "每一件产品背后都是爱",
+    inside_4: "顶级品质可可",
+    how_title: "使用方法：",
+    how_1: "点击“立即下单” → 自动打开 WhatsApp",
+    how_2: "加入我们的频道和卡考俱乐部即可享受折扣",
+    how_3: "完成！现在就可以下单啦",
+    proof_title: "现货产品",
+    proof_sub: "我们提供100%天然、品质最高的产品，同时支持种植家庭",
+    proof_growing: "顶级品质",
+    collabs_title: "可可制作工艺",
+    collabs_sub: "我们手中制作的每一块巧克力、每一份可可粉，都承载着一个故事",
+    collab_1: "种植 — 我们采用遮荫、间作的方式种植可可树，尊重玛雅里维埃拉周围的丛林生态系统。",
+    collab_2: "采摘 — 可可荚全部人工采摘，只挑选成熟度最佳的果实。",
+    collab_3: "发酵 — 可可豆经过数日自然发酵，这一关键步骤赋予可可独特的风味。",
+    collab_4: "晾晒 — 缓慢的自然阳光晾晒，保留可可豆本身的精油和香气。",
+    collab_5: "烘焙与研磨 — 以传统工艺精准烘焙，研磨成纯可可浆或可可粉。",
+    collab_6: "制作 — 我们将可可转化为最终产品，用心对待每一个配方，如同初次制作一般。",
+    collab_7: "Kakau 诞生于对玛雅土地的热爱，以及与世界分享其最珍贵财富之一——可可——的愿望。我们是直接种植生产者，这意味着从可可树开花到成品送到您手中的每一个环节，我们都全程参与，秉持对这个地区世代相传的传统方法的敬意与专注。我们相信，优质的可可急不得。因此，我们悉心发酵、晾晒和烘焙每一批收获，让每一粒豆子都保留全部的风味、香气与营养。我们不走工业化的捷径，更愿意顺应大地的节奏，而非追求大规模生产的速度。我们的使命：传承玛雅里维埃拉的可可传统，提供100%天然、品质最高的产品，同时支持当地种植家庭和可持续农业实践。",
+    collab_8: "🌱 纯正产地 — 可可种植和采收于玛雅里维埃拉",
+    collab_9: "🤲 手工工艺 — 每一步都用心制作，不急不躁",
+    collab_10: "🌎 可持续发展 — 尊重土地与自然规律",
+    collab_11: "🍫 纯净无添加 — 不含添加剂，无激进工业加工",
+    collab_12: "🏺 玛雅传统 — 传承神圣可可的古老遗产",
+
+    collab_cta_title: "邮件下单",
+    collab_cta_desc: "您也可以通过邮件索取我们的产品目录",
+    official_sub: "我们位于普拉亚德尔卡曼，可快速配送至整个玛雅里维埃拉地区",
+    statPulse: "CH",
+    stat_followers: "采用当地100%纯可可制作",
+    stat_reach: "非常适合制作传统饮品、烘焙或奶昔，无添加糖分或其他添加剂。",
+    stat_views: "烘焙可可碎，健康零食或配料首选。",
+    stat_interactions: "灵感源自古老的玛雅配方，冷热皆宜。",
+    stat_visits: "纯可可原料，适合专业或家庭烘焙使用。",
+    bikini_title: "可可俱乐部：",
+    bikini_desc: "美味得令人惊叹！",
+    vip_: "可可俱乐部",
+    vip_exclusive: "立即下单，探索我们的产品",
+    proof_meta: "对土地、可可种植社区以及千年传统保护的承诺",
+    screens_title: "以传统种植，用心制作",
+    screens_sub: "加入我们，了解可可的益处",
+    screens_verified: "订购您的可可粉",
+    cap_1: "玛雅里维埃拉新鲜采收", cap_2: "自然发酵，循序渐进", cap_3: "阳光缓慢晾晒", cap_4: "传统手工烘焙", cap_5: "研磨至纯可可", cap_6: "巧克力，即刻享用", cap_7: "从生产者直达您的餐桌",
+    lang_title: "选择语言",
+    lang_sub: "此设置仅改变文字。",
+     lyricstextt: "卡考先生的理念",
+    lyricstexxt: "在 Kakau，我们用双手、时间和这颗神圣种子应得的敬意来种植和加工可可。我们扎根于玛雅里维埃拉的心脏地带，直接与这片土地合作——数个世纪以来，这片土地孕育出祖先口中的“众神的食物”。我们手中制作的每一块巧克力、每一份可可粉，都承载着一个故事：那是玛雅可可的故事，用耐心种植，用心采摘，从容制作而成。",
+    zoom_title: "照片",
+    zoom_hint: "提示：使用箭头浏览，或在浏览器中放大查看。",
+    prev_btn: "上一张",
+    next_btn: "下一张",
+    back_to_top: "🍫 返回顶部",
+    verify_link: "验证账号",
+    provider_info: "Kakau 先生 · ",
+    clic_here: "点击这里",
+    About_more: "关于我们",
+  },
+
+  ja: {
+    tagline: "プラヤ・デル・カルメン",
+    nav_about: "プロジェクト", nav_vip: "今すぐ注文", nav_proof: "レビュー", nav_screens: "写真", nav_lang: "言語", nav_collabs: "製造工程", go_private: "カカウクラブ",
+    about_title: "木からチョコレートへ、一粒一粒に敬意を込めて",
+    about_tagline: "カカウ氏",
+    about_intro: "リビエラ・マヤ産100%カカオ。伝統的な栽培と手作りにこだわっています。",
+    about_bio: "ぜひ一度お試しください",
+    official_title: "✅ 公式SNSアカウント",
+    fake_notice: "こちらが弊社の公式連絡先チャンネルです。",
+    headline: "100%ナチュラルカカオ",
+    music: "音声をオンにする",
+    subhead: "試してみる",
+    cta: "今すぐ注文", cta_back: "戻る",
+    copy: "+529842135552", copied: "コピーしました！",
+    note18: "在庫あり。関連商品についてもお気軽にお問い合わせください",
+    chip_proof: "レビュー", chip_screens: "写真",
+    inside_title: "今日注文できる商品は？",
+    inside_1: "カカオを愛する方だけに",
+    inside_2: "ナチュラルカカオを選ぶ",
+    inside_3: "すべての商品に愛が込められています",
+    inside_4: "最高品質のカカオ",
+    how_title: "ご利用方法：",
+    how_1: "「今すぐ注文」をタップ → WhatsAppが開きます",
+    how_2: "公式チャンネルとカカウクラブに参加すると割引が受けられます",
+    how_3: "これで完了！さっそくご注文ください",
+    proof_title: "在庫商品",
+    proof_sub: "生産者ご家族を支援しながら、100%天然・最高品質の商品をお届けしています",
+    proof_growing: "最高水準の品質",
+    collabs_title: "カカオができるまで",
+    collabs_sub: "私たちの手から生まれるすべてのバー、すべての粉末には、それぞれの物語があります",
+    collab_1: "栽培 — リビエラ・マヤを取り巻くジャングルの生態系を尊重しながら、日陰と混植で育てたカカオの木を使用しています。",
+    collab_2: "収穫 — カカオポッドは一つひとつ手摘みし、最適な熟度に達したものだけを選別しています。",
+    collab_3: "発酵 — カカオ豆を数日間自然発酵させることで、カカオ特有の風味が引き出されます。",
+    collab_4: "乾燥 — ゆっくりと自然に天日干しすることで、豆本来の精油や香りを保ちます。",
+    collab_5: "焙煎と粉砕 — 職人の技で丁寧に焙煎し、純粋なカカオペーストやカカオパウダーになるまで挽きます。",
+    collab_6: "製造 — カカオを最終製品へと仕上げる際も、まるで初めて作るかのように一つひとつのレシピを大切にしています。",
+    collab_7: "Kakauは、マヤの大地への愛と、その最も貴重な宝物のひとつであるカカオを世界と分かち合いたいという想いから生まれました。私たちは直接生産者として、カカオの木が花を咲かせてから最終製品がお客様の手元に届くまで、すべての工程に寄り添い、この地域で世代を超えて受け継がれてきた伝統的な手法を尊重しています。良いカカオは急いでは作れないと私たちは信じています。だからこそ、豆本来の風味・香り・成分をすべて保てるよう、丁寧に発酵・乾燥・焙煎を行っています。工業的な近道は使わず、大量生産のペースよりも大地のリズムを大切にしています。私たちの使命は、リビエラ・マヤのカカオの伝統を守り、生産者ご家族とこの地域の持続可能な農業を支援しながら、100%天然・最高品質の商品をお届けすることです。",
+    collab_8: "🌱 本物の産地 — リビエラ・マヤで栽培・収穫されたカカオ",
+    collab_9: "🤲 手作りの工程 — 急がず丁寧に仕上げる、すべての工程",
+    collab_10: "🌎 サステナビリティ — 大地と自然のサイクルへの敬意",
+    collab_11: "🍫 純粋さ — 添加物や過度な工業処理を一切使用しません",
+    collab_12: "🏺 マヤの伝統 — 神聖なカカオの古来の遺産に敬意を込めて",
+
+    collab_cta_title: "メールでのご注文",
+    collab_cta_desc: "商品カタログはメールでもご請求いただけます",
+    official_sub: "プラヤ・デル・カルメンを拠点に、リビエラ・マヤ全域へ迅速に発送しております",
+    statPulse: "CH",
+    stat_followers: "この地域の100%純カカオを使用して作られています",
+    stat_reach: "伝統的な飲み物、お菓子作り、スムージーに最適。砂糖や添加物は一切加えていません。",
+    stat_views: "ローストしたカカオニブ。ヘルシーなおやつやトッピングにぴったりです。",
+    stat_interactions: "マヤの伝統レシピにインスパイアされ、温かくても冷たくてもお楽しみいただけます。",
+    stat_visits: "純粋なカカオ原料。プロの現場でも、ご家庭でのお菓子作りにも最適です。",
+    bikini_title: "カカオクラブ：",
+    bikini_desc: "驚くほど美味しいです！",
+    vip_: "カカオクラブ",
+    vip_exclusive: "今すぐご注文いただき、私たちの商品をご体験ください",
+    proof_meta: "大地、カカオ生産コミュニティ、そして何千年も続く伝統を守り続けるという私たちの想い",
+    screens_title: "伝統をもって育て、心を込めて作る",
+    screens_sub: "ぜひ仲間になって、カカオの魅力を発見してください",
+    screens_verified: "カカオパウダーをご注文ください",
+    cap_1: "リビエラ・マヤの新鮮な収穫", cap_2: "一歩ずつ進める自然発酵", cap_3: "ゆっくりとした天日乾燥", cap_4: "職人による焙煎", cap_5: "純粋なカカオになるまで粉砕", cap_6: "すぐに楽しめるチョコレート", cap_7: "生産者から直接あなたのテーブルへ",
+    lang_title: "言語を選択",
+    lang_sub: "これはテキストのみを変更します。",
+    lyricstextt: "カカウ氏の哲学",
+    lyricstexxt: "Kakauでは、この神聖な種が受けるべき手間と時間、そして敬意をもってカカオを育て、加工しています。リビエラ・マヤの中心に拠点を置き、私たちの祖先が「神々の食べ物」と呼んだものを何世紀にもわたって育んできた大地と、直接向き合いながら仕事をしています。私たちの手から生まれるすべてのバー、すべての粉末には物語があります。それは、忍耐強く育てられ、丁寧に収穫され、急がずに作られたマヤのカカオの物語です。",
+    zoom_title: "写真",
+    zoom_hint: "ヒント：矢印で移動するか、ブラウザでズームしてご覧ください。",
+    prev_btn: "前へ",
+    next_btn: "次へ",
+    back_to_top: "🍫 トップへ戻る",
+    verify_link: "アカウントを確認",
+    provider_info: "カカウ氏 · ",
+    clic_here: "こちらをクリック",
+    About_more: "私たちについて",
+  },
+
+  ko: {
+    tagline: "플라야 델 카르멘",
+    nav_about: "프로젝트", nav_vip: "지금 주문하기", nav_proof: "리뷰", nav_screens: "사진", nav_lang: "언어", nav_collabs: "제조 과정", go_private: "카카우 클럽",
+    about_title: "나무에서 초콜릿까지, 씨앗 하나하나를 존중하며",
+    about_tagline: "카카우 씨",
+    about_intro: "리비에라 마야 100% 카카오, 전통 방식으로 재배하고 손으로 만듭니다.",
+    about_bio: "꼭 한번 맛보세요",
+    official_title: "✅ 소셜 미디어",
+    fake_notice: "이것이 저희의 공식 연락 채널입니다.",
+    headline: "100% 천연 카카오",
+    music: "소리 켜기",
+    subhead: "맛보세요",
+    cta: "지금 주문하기", cta_back: "뒤로",
+    copy: "+529842135552", copied: "복사되었습니다!",
+    note18: "재고 있음. 관련 제품에 대해 문의해 주세요",
+    chip_proof: "리뷰", chip_screens: "사진",
+    inside_title: "오늘 주문할 수 있는 것은?",
+    inside_1: "카카오를 사랑하는 분들만을 위해",
+    inside_2: "천연 카카오를 선택하세요",
+    inside_3: "모든 제품 뒤에는 사랑이 담겨 있습니다",
+    inside_4: "최고 품질의 카카오",
+    how_title: "이용 방법:",
+    how_1: "\"지금 주문하기\"를 누르면 → 왓츠앱이 열립니다",
+    how_2: "저희 채널과 카카우 클럽에 가입하고 할인 혜택을 받으세요",
+    how_3: "완료! 이제 주문하실 수 있습니다",
+    proof_title: "재고 있는 제품",
+    proof_sub: "생산자 가족을 지원하며, 100% 천연·최고급 품질의 제품을 제공합니다",
+    proof_growing: "최상급 품질",
+    collabs_title: "카카오 제조 과정",
+    collabs_sub: "저희 손에서 나오는 모든 바, 모든 가루, 모든 제품에는 저마다의 이야기가 담겨 있습니다",
+    collab_1: "재배 — 리비에라 마야를 둘러싼 정글 생태계를 존중하며, 그늘 아래 혼작 방식으로 재배한 카카오나무를 사용합니다.",
+    collab_2: "수확 — 카카오 열매는 손으로 직접 수확하며, 최적의 숙성 단계에 도달한 것만 선별합니다.",
+    collab_3: "발효 — 카카오 씨앗은 여러 날 동안 자연 발효되며, 이는 카카오 특유의 풍미를 만들어내는 핵심 단계입니다.",
+    collab_4: "건조 — 씨앗 고유의 에센셜 오일과 향을 보존하기 위해 천천히 자연 햇볕에 건조합니다.",
+    collab_5: "로스팅과 분쇄 — 장인의 정밀함으로 로스팅하고, 순수한 카카오 페이스트나 파우더가 될 때까지 분쇄합니다.",
+    collab_6: "제조 — 카카오를 최종 제품으로 만드는 과정에서도, 마치 처음인 것처럼 모든 레시피를 정성껏 다룹니다.",
+    collab_7: "Kakau는 마야 땅에 대한 사랑과, 그 가장 소중한 보물 중 하나인 카카오를 세상과 나누고자 하는 마음에서 탄생했습니다. 저희는 직접 생산자로서, 카카오나무의 개화부터 여러분의 손에 닿는 최종 제품까지 모든 과정을 함께하며, 이 지역에서 대대로 전해 내려온 전통 방식을 존중하고 있습니다. 좋은 카카오는 서두를 수 없다고 믿습니다. 그래서 저희는 모든 수확물을 정성껏 발효, 건조, 로스팅하여 각 씨앗이 풍미와 향, 성분을 온전히 간직할 수 있도록 합니다. 산업적인 지름길을 사용하지 않으며, 대량 생산의 속도보다 대지의 리듬을 따릅니다. 저희의 사명은 생산자 가족과 지역의 지속 가능한 농업을 지원하면서, 100% 천연·최고급 품질의 제품을 제공하여 리비에라 마야의 카카오 전통을 보존하는 것입니다.",
+    collab_8: "🌱 진정한 원산지 — 리비에라 마야에서 재배 및 수확된 카카오",
+    collab_9: "🤲 수공예 공정 — 서두르지 않고 정성껏 진행되는 모든 단계",
+    collab_10: "🌎 지속 가능성 — 대지와 자연 순환에 대한 존중",
+    collab_11: "🍫 순수함 — 첨가물이나 과도한 산업 공정이 없습니다",
+    collab_12: "🏺 마야 전통 — 신성한 카카오의 유산을 기립니다",
+
+    collab_cta_title: "이메일로 주문",
+    collab_cta_desc: "이메일로도 제품 카탈로그를 요청하실 수 있습니다",
+    official_sub: "저희는 플라야 델 카르멘에 위치해 있으며, 리비에라 마야 전역으로 신속하게 배송합니다",
+    statPulse: "CH",
+    stat_followers: "이 지역의 100% 순수 카카오로 만들었습니다",
+    stat_reach: "전통 음료, 베이킹, 스무디에 이상적이며 설탕이나 첨가물이 전혀 들어가지 않습니다.",
+    stat_views: "로스팅한 카카오 닙스, 건강한 간식이나 토핑으로 완벽합니다.",
+    stat_interactions: "마야 조상들의 전통 레시피에서 영감을 받았으며, 따뜻하게 또는 차갑게 즐길 수 있습니다.",
+    stat_visits: "순수 카카오 원료로, 전문가용 또는 가정용 베이킹에 적합합니다.",
+    bikini_title: "카카오 클럽:",
+    bikini_desc: "정말 놀랍도록 맛있어요!",
+    vip_: "카카오 클럽",
+    vip_exclusive: "지금 주문하고 저희 제품을 만나보세요",
+    proof_meta: "대지와 카카오 생산 공동체, 그리고 수천 년 전통 보존에 대한 약속",
+    screens_title: "전통으로 재배하고, 정성으로 만든",
+    screens_sub: "함께하며 카카오의 효능을 알아보세요",
+    screens_verified: "카카오 파우더를 주문하세요",
+    cap_1: "리비에라 마야의 신선한 수확물", cap_2: "단계별 자연 발효", cap_3: "천천히 진행되는 햇볕 건조", cap_4: "수공예 로스팅", cap_5: "순수 카카오가 될 때까지 분쇄", cap_6: "바로 즐길 수 있는 초콜릿", cap_7: "생산자로부터 여러분의 식탁까지 직접",
+    lang_title: "언어 선택",
+    lang_sub: "이것은 텍스트만 변경합니다.",
+    lyricstextt: "카카우 씨의 철학",
+    lyricstexxt: "Kakau에서는 이 신성한 씨앗이 마땅히 받아야 할 손길과 시간, 존중으로 카카오를 재배하고 가공합니다. 리비에라 마야의 중심부에 자리하여, 수 세기 동안 저희 조상들이 신들의 음식이라 부르던 것을 길러온 이 땅과 직접 함께 일하고 있습니다. 저희 손에서 나오는 모든 바, 모든 가루, 모든 제품에는 이야기가 담겨 있습니다. 인내심을 가지고 재배하고, 정성껏 수확하며, 서두르지 않고 만들어낸 마야 카카오의 이야기입니다.",
+    zoom_title: "사진",
+    zoom_hint: "팁: 화살표로 이동하거나 브라우저에서 확대해 보세요.",
+    prev_btn: "이전",
+    next_btn: "다음",
+    back_to_top: "🍫 맨 위로",
+    verify_link: "계정 확인",
+    provider_info: "카카우 씨 · ",
+    clic_here: "여기를 클릭하세요",
+    About_more: "회사 소개",
+  },
+
+};
+  
+// Screenshot images for modal navigation
+    const SCREENSHOTS = [
+      { src: "assets/stats/profile-overview.jpg", caption: "cap_1" },
+      { src: "assets/stats/dashboard.jpg", caption: "cap_2" },
+      { src: "assets/stats/views-ring.jpg", caption: "cap_3" },
+      { src: "assets/stats/profile-activity.jpg", caption: "cap_4" },
+      { src: "assets/stats/interactions-ring.jpg", caption: "cap_5" },
+      { src: "assets/stats/top-locations.jpg", caption: "cap_6" },
+      { src: "assets/stats/age-gender.jpg", caption: "cap_7" }
+    ];
+
+    // About gallery photos - put your kakau photos in assets/photos/
+    const ABOUT_PHOTOS = [
+      "assets/photos/eva1.jpg",
+      "assets/photos/eva2.jpg",
+      "assets/photos/eva3.jpg",
+      "assets/photos/eva4.jpg",
+      "assets/photos/eva5.jpg",
+      "assets/photos/eva6.jpg",
+      "assets/photos/eva7.jpg",
+      "assets/photos/eva8.jpg"
+    ];
+
+    var currentImgIdx = 0;
+    var currentGalleryType = "screenshots";
+    var aboutIdx = 0;
+    var aboutAutoSlide = null;
+    var aboutTotal = ABOUT_PHOTOS.length;
+    
+    var screensIdx = 0;
+    var screensAutoSlide = null;
+    var screensTotal = SCREENSHOTS.length;
+
+    function setText(lang) {
+      var dict = I18N[lang] || I18N.en;
+      document.documentElement.lang = lang.indexOf("pt") === 0 ? "pt-BR" : lang;
+      document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+
+      var els = document.querySelectorAll("[data-i18n]");
+      for (var i = 0; i < els.length; i++) {
+        var el = els[i];
+        var key = el.getAttribute("data-i18n");
+        var val = dict[key] || I18N.en[key];
+        if (val != null) el.innerHTML = val;
+      }
+
+      var btns = document.querySelectorAll(".langBtn");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].classList.toggle("active", btns[i].getAttribute("data-lang") === lang);
+      }
+    }
+
+    function openModal(id) {
+      var el = document.getElementById(id);
+      if (el) el.classList.add("open");
+    }
+    
+    function closeModal(id) {
+      var el = document.getElementById(id);
+      if (el) el.classList.remove("open");
+    }
+
+    // Lyrics modal functions
+    function openLyricsModal() {
+      var overlay = document.getElementById("lyricsOverlay");
+      if (overlay) {
+        overlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+    }
+    
+    function closeLyricsModal() {
+      var overlay = document.getElementById("lyricsOverlay");
+      if (overlay) {
+        overlay.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+    }
+
+    function goToAboutSlide(idx) {
+      var track = document.getElementById("aboutGalleryTrack");
+      var dots = document.getElementById("aboutDots");
+      if (!track || !dots) return;
+      
+      var imgs = track.getElementsByTagName("img");
+      for (var i = 0; i < imgs.length; i++) {
+        imgs[i].classList.remove("active");
+      }
+      
+      aboutIdx = idx;
+      track.style.transform = "translateX(-" + (idx * 100) + "%)";
+      
+      if (imgs[idx]) {
+        imgs[idx].classList.add("active");
+      }
+      
+      var dotEls = dots.querySelectorAll(".galleryDot");
+      for (var i = 0; i < dotEls.length; i++) {
+        if (i === idx) {
+          dotEls[i].classList.add("active");
+        } else {
+          dotEls[i].classList.remove("active");
+        }
+      }
+    }
+
+    function nextAboutSlide() {
+      goToAboutSlide((aboutIdx + 1) % aboutTotal);
+    }
+
+    function startAutoSlide() {
+      if (aboutAutoSlide) clearInterval(aboutAutoSlide);
+      aboutAutoSlide = setInterval(nextAboutSlide, 3000);
+    }
+
+    // Screens Gallery Slider Functions
+    function goToScreensSlide(idx) {
+      var track = document.getElementById("screensGalleryTrack");
+      var dots = document.getElementById("screensDots");
+      var caption = document.getElementById("screensCaption");
+      if (!track || !dots) return;
+      
+      var imgs = track.getElementsByTagName("img");
+      for (var i = 0; i < imgs.length; i++) {
+        imgs[i].classList.remove("active");
+      }
+      
+      screensIdx = idx;
+      track.style.transform = "translateX(-" + (idx * 100) + "%)";
+      
+      if (imgs[idx]) {
+        imgs[idx].classList.add("active");
+        // Update caption
+        var capKey = imgs[idx].getAttribute("data-cap");
+        var lang = localStorage.getItem("lang") || "en";
+        var dict = I18N[lang] || I18N.en;
+        if (caption && dict[capKey]) {
+          caption.textContent = dict[capKey];
+        }
+      }
+      
+      var dotEls = dots.querySelectorAll(".galleryDot");
+      for (var i = 0; i < dotEls.length; i++) {
+        if (i === idx) {
+          dotEls[i].classList.add("active");
+        } else {
+          dotEls[i].classList.remove("active");
+        }
+      }
+    }
+
+    function nextScreensSlide() {
+      goToScreensSlide((screensIdx + 1) % screensTotal);
+    }
+
+    function startScreensAutoSlide() {
+      if (screensAutoSlide) clearInterval(screensAutoSlide);
+      screensAutoSlide = setInterval(nextScreensSlide, 4000);
+    }
+
+    function getCurrentGallery() {
+      return currentGalleryType === "about" ? ABOUT_PHOTOS : SCREENSHOTS;
+    }
+
+    function updateImgModal() {
+      var gallery = getCurrentGallery();
+      var total = gallery.length;
+      var imgFull = document.getElementById("imgFull");
+      var imgCurrent = document.getElementById("imgCurrent");
+      var imgTotalEl = document.getElementById("imgTotal");
+      var imgPrevBtn = document.getElementById("imgPrev");
+      var imgNextBtn = document.getElementById("imgNext");
+      
+      if (currentGalleryType === "about") {
+        imgFull.src = gallery[currentImgIdx];
+      } else {
+        imgFull.src = gallery[currentImgIdx].src;
+      }
+      imgCurrent.textContent = currentImgIdx + 1;
+      imgTotalEl.textContent = total;
+      imgPrevBtn.disabled = currentImgIdx === 0;
+      imgNextBtn.disabled = currentImgIdx === total - 1;
+    }
+
+
+    function initSparkles() {
+      var wrap = document.querySelector(".sparkles");
+      if (!wrap || wrap.dataset.ready === "1") return;
+      wrap.dataset.ready = "1";
+
+      // Add extra sparkles so the background feels alive
+      var extra = 36;
+      for (var i = 0; i < extra; i++) {
+        var s = document.createElement("div");
+        s.className = "sparkle";
+        s.style.left = (Math.random() * 100) + "%";
+        s.style.top = (Math.random() * 100) + "%";
+        s.style.animationDelay = (Math.random() * 3) + "s";
+        s.style.animationDuration = (2.6 + Math.random() * 3.2) + "s";
+        var size = 2 + Math.random() * 4;
+        s.style.width = size + "px";
+        s.style.height = size + "px";
+        wrap.appendChild(s);
+      }
+    }
+
+    function initPage() {
+      console.log("Initializing page...");
+      
+      // Year
+      var yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // Language
+      var saved = localStorage.getItem("lang") || "es";
+      setText(saved);
+
+      // Sparkles
+      initSparkles();
+
+      // Scroll chips
+      var chips = document.querySelectorAll("[data-scroll]");
+      for (var i = 0; i < chips.length; i++) {
+        (function(chip) {
+          chip.addEventListener("click", function() {
+            var id = chip.getAttribute("data-scroll");
+            var target = document.querySelector(id);
+            if (target) target.scrollIntoView({behavior:"smooth", block:"start"});
+          });
+        })(chips[i]);
+      }
+
+      // Copy button
+      var copyBtn = document.getElementById("copyLink");
+      if (copyBtn) {
+        copyBtn.addEventListener("click", function() {
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(TG_LINK).then(function() {
+              var current = copyBtn.querySelector("[data-i18n='copy']");
+              var lang = localStorage.getItem("lang") || "en";
+              if (current) {
+                current.textContent = (I18N[lang] && I18N[lang].copied) || "Copied!";
+                setTimeout(function() {
+                  current.textContent = (I18N[lang] && I18N[lang].copy) || "Copy link";
+                }, 1300);
+              }
+            });
+          } else {
+            window.prompt("Copy link:", TG_LINK);
+          }
+        });
+      }
+
+      // About Gallery Dots
+      var aboutDots = document.getElementById("aboutDots");
+      if (aboutDots) {
+        aboutDots.innerHTML = "";
+        for (var i = 0; i < aboutTotal; i++) {
+          (function(idx) {
+            var dot = document.createElement("span");
+            dot.className = "galleryDot" + (idx === 0 ? " active" : "");
+            dot.addEventListener("click", function() {
+              goToAboutSlide(idx);
+              startAutoSlide();
+            });
+            aboutDots.appendChild(dot);
+          })(i);
+        }
+      }
+
+      // About Gallery Arrows
+      var aboutPrev = document.getElementById("aboutPrev");
+      var aboutNext = document.getElementById("aboutNext");
+      
+      if (aboutPrev) {
+        aboutPrev.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          goToAboutSlide((aboutIdx - 1 + aboutTotal) % aboutTotal);
+          startAutoSlide();
+        });
+      }
+      
+      if (aboutNext) {
+        aboutNext.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          goToAboutSlide((aboutIdx + 1) % aboutTotal);
+          startAutoSlide();
+        });
+      }
+
+      // Pause on hover
+      var galleryBox = document.querySelector(".galleryBox");
+      if (galleryBox) {
+        galleryBox.addEventListener("mouseenter", function() {
+          if (aboutAutoSlide) clearInterval(aboutAutoSlide);
+        });
+        galleryBox.addEventListener("mouseleave", function() {
+          startAutoSlide();
+        });
+      }
+
+      // Screens Gallery Initialization
+      var screensTrack = document.getElementById("screensGalleryTrack");
+      var screensDots = document.getElementById("screensDots");
+      if (screensTrack && screensDots) {
+        var screensImgs = screensTrack.getElementsByTagName("img");
+        screensTotal = screensImgs.length;
+        
+        // Create dots
+        screensDots.innerHTML = "";
+        for (var i = 0; i < screensTotal; i++) {
+          var dot = document.createElement("button");
+          dot.className = "galleryDot" + (i === 0 ? " active" : "");
+          dot.setAttribute("aria-label", "Go to slide " + (i + 1));
+          (function(idx) {
+            dot.addEventListener("click", function() {
+              goToScreensSlide(idx);
+              if (screensAutoSlide) clearInterval(screensAutoSlide);
+            });
+          })(i);
+          screensDots.appendChild(dot);
+        }
+        
+        // Arrow buttons
+        var screensPrev = document.getElementById("screensPrev");
+        var screensNext = document.getElementById("screensNext");
+        if (screensPrev) {
+          screensPrev.addEventListener("click", function() {
+            goToScreensSlide((screensIdx - 1 + screensTotal) % screensTotal);
+            if (screensAutoSlide) clearInterval(screensAutoSlide);
+          });
+        }
+        if (screensNext) {
+          screensNext.addEventListener("click", function() {
+            goToScreensSlide((screensIdx + 1) % screensTotal);
+            if (screensAutoSlide) clearInterval(screensAutoSlide);
+          });
+        }
+        
+        // Click on images to open modal
+        for (var i = 0; i < screensImgs.length; i++) {
+          (function(idx) {
+            screensImgs[idx].addEventListener("click", function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              currentGalleryType = "screenshots";
+              currentImgIdx = idx;
+              updateImgModal();
+              openModal("imgOverlay");
+            });
+          })(i);
+        }
+        
+        // Start auto-slide
+        startScreensAutoSlide();
+        
+        // Pause on hover
+        var screensGalleryBox = screensTrack.closest(".galleryBox");
+        if (screensGalleryBox) {
+          screensGalleryBox.addEventListener("mouseenter", function() {
+            if (screensAutoSlide) clearInterval(screensAutoSlide);
+          });
+          screensGalleryBox.addEventListener("mouseleave", function() {
+            startScreensAutoSlide();
+          });
+        }
+      }
+
+      // About Gallery Images Click
+      var aboutTrack = document.getElementById("aboutGalleryTrack");
+      if (aboutTrack) {
+        var aboutImgs = aboutTrack.getElementsByTagName("img");
+        console.log("Found " + aboutImgs.length + " about images");
+        for (var i = 0; i < aboutImgs.length; i++) {
+        (function(idx) {
+            aboutImgs[idx].addEventListener("click", function(e) {
+              console.log("About image clicked: " + idx);
+            e.preventDefault();
+            e.stopPropagation();
+              currentGalleryType = "about";
+            currentImgIdx = idx;
+            updateImgModal();
+            openModal("imgOverlay");
+          });
+        })(i);
+        }
+      }
+
+      // Screenshot click is now handled in screens gallery initialization above
+
+      // Image Modal Navigation
+      var imgPrevBtn = document.getElementById("imgPrev");
+      var imgNextBtn = document.getElementById("imgNext");
+      var closeImgBtn = document.getElementById("closeImg");
+      var imgOverlay = document.getElementById("imgOverlay");
+
+      if (imgPrevBtn) {
+        imgPrevBtn.addEventListener("click", function(e) {
+          e.preventDefault();
+          if (currentImgIdx > 0) {
+            currentImgIdx--;
+            updateImgModal();
+          }
+        });
+      }
+
+      if (imgNextBtn) {
+        imgNextBtn.addEventListener("click", function(e) {
+          e.preventDefault();
+          var gallery = getCurrentGallery();
+          if (currentImgIdx < gallery.length - 1) {
+            currentImgIdx++;
+            updateImgModal();
+          }
+        });
+      }
+
+      if (closeImgBtn) {
+        closeImgBtn.addEventListener("click", function() {
+          closeModal("imgOverlay");
+        });
+      }
+
+      if (imgOverlay) {
+        imgOverlay.addEventListener("click", function(e) {
+          if (e.target === imgOverlay) closeModal("imgOverlay");
+        });
+      }
+
+      // Language modal
+      var langGrid = document.getElementById("langGrid");
+      if (langGrid) {
+        for (var i = 0; i < LANGS.length; i++) {
+          (function(l) {
+            var b = document.createElement("button");
+            b.className = "langBtn";
+            b.type = "button";
+            b.textContent = l.label;
+            b.setAttribute("data-lang", l.code);
+            b.addEventListener("click", function() {
+              localStorage.setItem("lang", l.code);
+              setText(l.code);
+              closeModal("langOverlay");
+            });
+            langGrid.appendChild(b);
+          })(LANGS[i]);
+        }
+      }
+
+      var openLangBtn = document.getElementById("openLang");
+      var openLang2Btn = document.getElementById("openLang2");
+      var closeLangBtn = document.getElementById("closeLang");
+      var langOverlay = document.getElementById("langOverlay");
+
+      if (openLangBtn) openLangBtn.addEventListener("click", function() { openModal("langOverlay"); });
+      if (openLang2Btn) openLang2Btn.addEventListener("click", function() { openModal("langOverlay"); });
+      if (closeLangBtn) closeLangBtn.addEventListener("click", function() { closeModal("langOverlay"); });
+      if (langOverlay) {
+        langOverlay.addEventListener("click", function(e) {
+          if (e.target === langOverlay) closeModal("langOverlay");
+        });
+      }
+
+      // Lyrics modal
+      var openLyricsBtn = document.getElementById("openLyricsBtn");
+      var closeLyricsBtn = document.getElementById("closeLyrics");
+      var lyricsOverlay = document.getElementById("lyricsOverlay");
+      
+      if (openLyricsBtn) openLyricsBtn.addEventListener("click", openLyricsModal);
+      if (closeLyricsBtn) closeLyricsBtn.addEventListener("click", closeLyricsModal);
+      if (lyricsOverlay) {
+        lyricsOverlay.addEventListener("click", function(e) {
+          if (e.target === lyricsOverlay) closeLyricsModal();
+        });
+      }
+
+      // Keyboard
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape") {
+          closeModal("langOverlay");
+          closeModal("imgOverlay");
+          closeLyricsModal();
+        }
+        var imgOvl = document.getElementById("imgOverlay");
+        if (imgOvl && imgOvl.classList.contains("open")) {
+          var gallery = getCurrentGallery();
+          if (e.key === "ArrowLeft" && currentImgIdx > 0) {
+            currentImgIdx--;
+            updateImgModal();
+          }
+          if (e.key === "ArrowRight" && currentImgIdx < gallery.length - 1) {
+            currentImgIdx++;
+            updateImgModal();
+          }
+        }
+      });
+
+      // Start auto-slide
+      startAutoSlide();
+      
+      // Make sure first image is active
+      goToAboutSlide(0);
+      
+      console.log("Page initialized!");
+    }
+  
+
+        // Hearts background (lightweight)
+    const heartsRoot = document.querySelector('.hearts');
+    const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const heartGlyphs = ['💗','💕','💖','💞','💓'];
+
+    function spawnHeart(){
+      if(!heartsRoot || reducedMotion) return;
+
+      // keep it light
+      if(heartsRoot.childElementCount > 18) return;
+
+      const el = document.createElement('span');
+      el.className = 'heart';
+      el.textContent = heartGlyphs[(Math.random()*heartGlyphs.length)|0];
+
+      const size = (12 + Math.random()*26).toFixed(0) + 'px';
+      const x = (Math.random()*100).toFixed(2) + '%';
+      const y = (10 + Math.random()*86).toFixed(2) + '%';
+      const dur = (4.2 + Math.random()*4.3).toFixed(2) + 's';
+      const op = (0.08 + Math.random()*0.12).toFixed(3);
+      const sx = ((Math.random()*60) - 30).toFixed(1) + 'px';
+      const ty = (-1 * (26 + Math.random()*44)).toFixed(1) + 'px';
+      const r = ((Math.random()*24) - 12).toFixed(1) + 'deg';
+
+      el.style.setProperty('--s', size);
+      el.style.setProperty('--x', x);
+      el.style.setProperty('--y', y);
+      el.style.setProperty('--d', dur);
+      el.style.setProperty('--o', op);
+      el.style.setProperty('--sx', sx);
+      el.style.setProperty('--ty', ty);
+      el.style.setProperty('--r', r);
+
+      heartsRoot.appendChild(el);
+      el.addEventListener('animationend', ()=> el.remove());
+    }
+
+    if(heartsRoot && !reducedMotion){
+      setInterval(spawnHeart, 420);
+      // initial sprinkle
+      for(let i=0;i<10;i++) setTimeout(spawnHeart, i*160);
+    }
+
+    // Mobile VIP "Tap to " visibility
+    const vipSection = document.getElementById('vip');
+    const vipImageCta = document.querySelector('.vipImageCta');
+    
+    if(vipSection && vipImageCta){
+      const isMobile = () => window.innerWidth <= 900;
+      
+      const vipObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(isMobile()){
+            if(entry.isIntersecting){
+              vipImageCta.classList.add('mobileVisible');
+            } else {
+              vipImageCta.classList.remove('mobileVisible');
+            }
+          }
+        });
+      }, {
+        threshold: 0.3, // trigger when 30% of section is visible
+        rootMargin: '0px'
+      });
+      
+      vipObserver.observe(vipSection);
+      
+      // Also handle resize events
+      window.addEventListener('resize', () => {
+        if(!isMobile()){
+          vipImageCta.classList.remove('mobileVisible');
+        }
+      });
+    }
+
+    // Mobile Menu Control
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileMenuItems = document.querySelectorAll('.mobileMenuItem');
+    const openLangMobile = document.getElementById('openLangMobile');
+    
+    function closeMenu(){
+      if(burgerBtn) burgerBtn.classList.remove('active');
+      if(mobileMenu) mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    
+    if(burgerBtn && mobileMenu){
+      burgerBtn.addEventListener('click', () => {
+        burgerBtn.classList.toggle('active');
+        mobileMenu.classList.toggle('open');
+        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+      });
+      
+      // Close button
+      if(closeMobileMenu){
+        closeMobileMenu.addEventListener('click', closeMenu);
+      }
+      
+      // Close menu when clicking menu items
+      mobileMenuItems.forEach(item => {
+        item.addEventListener('click', closeMenu);
+      });
+      
+      // Open language modal from mobile menu
+      if(openLangMobile){
+        openLangMobile.addEventListener('click', () => {
+          closeMenu();
+          openModal('langOverlay');
+        });
+      }
+    }
+    
+    // Quick language button in mobile header
+    const openLangQuick = document.getElementById('openLangQuick');
+    if(openLangQuick){
+      openLangQuick.addEventListener('click', () => {
+        openModal('langOverlay');
+      });
+    }
+
+    // Background Music Control
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    const musicToggleMobile = document.getElementById('musicToggleMobile');
+    const musicIcon = document.getElementById('musicIcon');
+    const musicIconMobile = document.getElementById('musicIconMobile');
+    let musicPlaying = false; // Music OFF by default
+    
+    // Function to update all music button states
+    function updateMusicUI(playing){
+      // Always show ♪, just change opacity via class
+      if(musicIcon) musicIcon.textContent = '♪';
+      if(musicIconMobile) musicIconMobile.textContent = '♪';
+      if(musicToggle){
+        if(playing) musicToggle.classList.add('playing');
+        else musicToggle.classList.remove('playing');
+      }
+      if(musicToggleMobile){
+        if(playing) musicToggleMobile.classList.add('playing');
+        else musicToggleMobile.classList.remove('playing');
+      }
+    }
+    
+    // Toggle music function
+    function toggleMusic(){
+      if(musicPlaying){
+        bgMusic.pause();
+        musicPlaying = false;
+      } else {
+        bgMusic.play();
+        musicPlaying = true;
+      }
+      updateMusicUI(musicPlaying);
+    }
+    
+    if(bgMusic){
+      // Set volume to 30% (below medium)
+      bgMusic.volume = 0.3;
+      
+      // Music is OFF by default - user must click to enable
+      // No autoplay - respects users who might be in quiet environments
+      
+      // Toggle music on button click (desktop)
+      if(musicToggle){
+        musicToggle.addEventListener('click', toggleMusic);
+      }
+      
+      // Toggle music on button click (mobile)
+      if(musicToggleMobile){
+        musicToggleMobile.addEventListener('click', toggleMusic);
+      }
+    }
+
+    // Language button is always visible now
+</script>
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;6a391bbc09d94710b737f551ecfbfc49&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+<div id="monica-content-root" class="monica-widget" style="pointer-events: auto;"></div></body></html>

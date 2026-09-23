@@ -1,0 +1,172 @@
+/* Reset de márgenes y padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+/* BODY */
+body {
+  background: #ffffff;  /* Fondo blanco */
+  color: #111111;       /* Texto oscuro (gris oscuro) */
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url("img/hero.jpg") center/cover no-repeat; /* Imagen de fondo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+}
+
+.hero-inner {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+  padding: 5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+.hero h1 {
+  font-size: 3.8rem;
+  letter-spacing: 1px;
+  color: #111; /* Título en color oscuro */
+}
+
+.hero p {
+  margin: 1.5rem 0;
+  font-weight: 300;
+  color: #444; /* Color gris más suave para el subtítulo */
+}
+
+/* BOTONES */
+.btn {
+  padding: 1rem 3rem;
+  background: #000; /* Botón negro */
+  color: #fff;      /* Texto blanco */
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #333; /* Cambio a negro más oscuro al pasar el ratón */
+  transform: translateY(-4px); /* Efecto de levitar */
+}
+
+/* SECTIONS */
+.section {
+  padding: 8rem 10%;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ABOUT SECTION */
+.about h2 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: #111;
+}
+
+.about p {
+  margin: 1rem 0;
+  font-weight: 300;
+  color: #666;  /* Gris más suave para la descripción */
+}
+
+/* ESTADÍSTICAS */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  margin-top: 3rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat strong {
+  font-size: 2.2rem;
+  color: #000; /* Texto en negro para las métricas */
+}
+
+.stat span {
+  color: #777; /* Subtítulo en gris claro */
+  font-weight: 400;
+}
+
+/* GALLERY */
+.gallery {
+  padding: 5rem 0;
+  overflow: hidden;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.5s ease;
+}
+
+.gallery img {
+  width: 400px;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+/* SOCIAL SECTION */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.social-links a {
+  color: #111;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #000;
+  transform: scale(1.1); /* Sutil animación al pasar el ratón */
+}
+
+/* FOOTER */
+footer {
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 1rem;
+  color: #777;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .stats {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .gallery-track {
+    flex-direction: column;
+    align-items: center;
+  }
+}
